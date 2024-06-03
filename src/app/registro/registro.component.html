@@ -1,0 +1,76 @@
+<div class="container-fluid" style="background: #13293D;">
+    <div class="container p-3">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-12 col-md-8 col-lg-10">
+                <div class="card shadow rounded">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <a routerLink="/">
+                              <img src="../../assets/img/mapache.png" alt="Logo Mapache" width="70" height="70">
+                            </a>
+                          </div>
+                            <h3 class="text-center">Regístrate!</h3>
+                            <form #f="ngForm" (ngSubmit)="f.form.valid && registro_participante(f)"  class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="paternalSurname" class="form-label">Apellido Paterno</label>
+                                    <input type="text" class="form-control" id="paternalSurname" name="paternalSurname"
+                                        ngModel required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="maternalSurname" class="form-label">Apellido Materno</label>
+                                    <input type="text" class="form-control" id="maternalSurname" name="maternalSurname"
+                                        ngModel required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="names" class="form-label">Nombres</label>
+                                    <input type="text" class="form-control" id="names" name="names" ngModel required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Correo</label>
+                                    <input type="email" class="form-control" id="email" name="email" ngModel required
+                                        placeholder="ejemplo@gmail.com">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="password" ngModel
+                                        required>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="password_confirmation" class="form-label">Repetir contraseña</label>
+                                    <input type="password" class="form-control" id="password_confirmation"
+                                        name="password_confirmation" ngModel required placeholder="Repite tu contraseña">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="phoneNumber" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" ngModel
+                                        required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="gender" class="form-label">Género</label>
+                                    <select id="inputGenero" class="form-select" name="gender" ngModel
+                                        required>
+                                        <option selected>Género...</option>
+                                        <option value="H">H</option>
+                                        <option value="M">M</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="institutions_id" class="form-label">Institución</label>
+                                    <select id="inputInstitucion" class="form-select" name="institutions_id" ngModel
+                                        required>
+                                        <option disabled selected>Elige tu institución...</option>
+                                        <option *ngFor="let instituto of instituciones" [value]="instituto.id">
+                                            {{instituto.shortName}} - {{instituto.longName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <input type="submit" value="Registrarse" class="btn btn-primary">
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

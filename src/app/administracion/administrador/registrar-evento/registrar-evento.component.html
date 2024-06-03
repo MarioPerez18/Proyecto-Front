@@ -1,0 +1,89 @@
+<app-administrador>
+    <div class="card mb-4">
+        <div class="card-header">
+            Registrar eventos
+        </div>
+        <div class="card-body">
+            <form method="POST" action="" >
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+                    <input name="nombre" type="text" class="form-control" aria-describedby="emailHelp"
+                        placeholder="Ingrese el nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Descripción:</label>
+                    <input name="descripcion" type="text" class="form-control" placeholder="Descripción del evento"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Fecha de Inicio:</label>
+                    <input name="fechaInicio" type="datetime" class="form-control" placeholder="Ej: 2023-10-01 12:00:00"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Fecha de Fin:</label>
+                    <input name="fechaFin" type="datetime" class="form-control" placeholder="Ej: 2023-10-02 14:00:00"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+   
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title text-body">Eventos</h3>
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+              <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Editar</th>
+                <th>Eliminar</th>  
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let evento of eventos">
+                    <td>{{evento.id}}</td>
+                    <td> {{evento.nameEvent}}</td>
+                    <td>{{evento.description}}</td>
+                    <td>{{evento.startDate}}</td>
+                    <td>{{evento.endDate}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="">
+                            <i class="fas fa-fw fa-pen-nib"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="" method="POST">
+                      
+                         <button class="btn btn-danger">
+                            <i class="fas fa-fw fa-trash"></i>
+                         </button>
+                         </form>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+</app-administrador>
