@@ -1,0 +1,32 @@
+<app-administrador>
+    <div class="card mb-4">
+        <div class="card-header">
+            Actualizar institución
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="f.form.valid && actualizar_instituto()" >
+                <div class="mb-3">
+                    <label for="shortName" class="form-label">Nombre Corto:</label>
+                    <input type="text" class="form-control" id="shortName" name="shortName" aria-describedby="emailHelp"
+                        placeholder="Ejemplo: ITCH" [(ngModel)]="nombre_corto_input" required>
+                </div>
+                <div class="mb-3">
+                    <label for="longName" class="form-label">Nombre Largo:</label>
+                    <input type="text" class="form-control" id="longName" name="longName" placeholder="Ejemplo: Instituto Tecnológico De Chetumal"
+                    [(ngModel)]="nombre_largo_input" required>
+                </div>
+                <div class="mb-3">
+                    <label for="institution_type_id" class="form-label">Tipo de institución:</label>
+                    <select id="inputInstitucion" class="form-select" name="institution_type_id" [(ngModel)]="tipo_institucion_id_input"
+                        required>
+                        <option disabled selected>Elige el tipo de institución...</option>
+                        <option *ngFor="let tipo_de_instituto of tipos_de_instituciones" [value]="tipo_de_instituto.id">
+                            {{tipo_de_instituto.type}}
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+</app-administrador>

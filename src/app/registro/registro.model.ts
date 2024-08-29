@@ -8,7 +8,7 @@ export class Registro{
     email:string = '';
     password:string = '';
     password_confirmation:string = '';
-    institutions_id:number = 0;
+    institution_id:number = 0;
     
 
     constructor( apellidoPaterno:string, apellidoMaterno:string, nombres:string,
@@ -22,7 +22,7 @@ export class Registro{
         this.email = correo;
         this.password = contrasena;
         this.password_confirmation = confirmar_contraseña;
-        this.institutions_id = institucion_id;
+        this.institution_id = institucion_id;
      
     }
 }

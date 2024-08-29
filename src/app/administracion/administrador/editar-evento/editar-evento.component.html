@@ -1,0 +1,65 @@
+<app-administrador>
+    <div class="card mb-4">
+        <div class="card-header">Actualizar evento</div>
+        <div class="card-body">
+          <form #f="ngForm" (ngSubmit)="f.form.valid && editar_evento()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre_evento"
+                name="nombre_evento"
+                aria-describedby="emailHelp"
+                placeholder="Ingrese el nombre"
+                [(ngModel)]="nombre_evento_input"
+                required
+              /> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Descripción:</label
+              >
+              <input
+                type="text"
+                id="descripcion"
+                name="descripcion"
+                class="form-control"
+                placeholder="Descripción del evento"
+                [(ngModel)]="descripcion_input"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Fecha de Inicio:</label
+              >
+              <input
+                type="datetime"
+                id="fecha_inicio"
+                name="fecha_inicio"
+                class="form-control"
+                placeholder="Ej: 2023-10-01 12:00:00"
+                [(ngModel)]="fecha_inicio_input"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Fecha de Fin:</label
+              >
+              <input
+                type="datetime"
+                id="fecha_fin"
+                name="fecha_fin"
+                class="form-control"
+                placeholder="Ej: 2023-10-02 14:00:00"
+                [(ngModel)]="fecha_fin_input"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </form>
+        </div>
+      </div>
+</app-administrador>

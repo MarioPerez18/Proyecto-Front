@@ -3,12 +3,13 @@ import { DataService } from 'src/app/data.service';
 
 
 @Component({
-  selector: 'app-coordinador',
-  templateUrl: './coordinador.component.html',
-  styleUrls: ['./coordinador.component.css']
+  selector: 'app-participantes',
+  templateUrl: './participantes.component.html',
+  styleUrls: ['./participantes.component.css']
 })
-export class CoordinadorComponent implements OnInit {
+export class ParticipantesComponent implements OnInit {
   nombre_usuario: string | null = null;
+
 
   constructor(private dataService: DataService){}
 

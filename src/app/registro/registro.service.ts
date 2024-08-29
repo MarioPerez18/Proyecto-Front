@@ -15,7 +15,9 @@ export class RegistroService{
             (respuesta:any) => {
                 console.log("Te has registrado " +  respuesta.token);
                 sessionStorage.setItem('token', respuesta.token);
-                this.router.navigate(['/']);
+                sessionStorage.setItem("nombre_usuario", respuesta.user);
+                sessionStorage.setItem("id_usuario", respuesta.user_id);
+                this.router.navigate(['/participantes']);
             },
             error => console.log("Error al guardar la cuenta" + error)
         );

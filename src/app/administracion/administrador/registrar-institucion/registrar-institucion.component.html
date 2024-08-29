@@ -5,21 +5,26 @@
             Registrar instituciones
         </div>
         <div class="card-body">
-            <form method="POST" action="" >
+            <form #f="ngForm" (ngSubmit)="f.form.valid && registrar_instituto(f)" >
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nombre Corto:</label>
-                    <input name="nombre" type="text" class="form-control" aria-describedby="emailHelp"
-                        placeholder="Ejemplo: ITCH" required>
+                    <label for="shortName" class="form-label">Nombre Corto:</label>
+                    <input type="text" class="form-control" id="shortName" name="shortName" aria-describedby="emailHelp"
+                        placeholder="Ejemplo: ITCH" ngModel required>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Nombre Largo:</label>
-                    <input name="descripcion" type="text" class="form-control" placeholder="Ejemplo: Instituto Tecnológico De Chetumal"
-                        required>
+                    <label for="longName" class="form-label">Nombre Largo:</label>
+                    <input type="text" class="form-control" id="longName" name="longName" placeholder="Ejemplo: Instituto Tecnológico De Chetumal"
+                    ngModel required>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Tipo de institución:</label>
-                    <input name="fechaInicio" type="datetime" class="form-control" placeholder=""
+                    <label for="institution_type_id" class="form-label">Tipo de institución:</label>
+                    <select id="inputInstitucion" class="form-select" name="institution_type_id" ngModel
                         required>
+                        <option disabled selected>Elige el tipo de institución...</option>
+                        <option *ngFor="let tipo_de_instituto of tipos_de_instituciones" [value]="tipo_de_instituto.id">
+                            {{tipo_de_instituto.type}}
+                        </option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -50,7 +55,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nombre Corto</th>
                     <th scope="col">Nombre Largo</th>
-                    <th scope="col">Tipo de institución</th>
+                    <th scope="col">Tipo de instituto</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -60,19 +65,16 @@
                     <td>{{insitituto.id}}</td>
                     <td>{{insitituto.shortName}}</td>
                     <td>{{insitituto.longName}}</td>
-                    <td></td>
+                    <td>{{insitituto.institution_type.type}}</td>
                     <td>
-                        <a class="btn btn-primary" href="">
+                        <a class="btn btn-primary" [routerLink]="['/administrador/instituciones', insitituto.longNameUri.replaceAll(' ', '-')]">
                             <i class="fas fa-fw fa-pen-nib"></i>
                         </a>
                     </td>
                     <td>
-                        <form action="" method="POST">
-                      
-                         <button class="btn btn-danger">
-                            <i class="fas fa-fw fa-trash"></i>
-                         </button>
-                         </form>
+                        <button class="btn btn-danger" (click)="eliminar_instituto(insitituto.id)">
+                           <i class="fas fa-fw fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>

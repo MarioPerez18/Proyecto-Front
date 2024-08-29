@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 
 
@@ -10,9 +10,14 @@ import { DataService } from 'src/app/data.service';
 })
 
 
-export class AdministradorComponent {
+export class AdministradorComponent implements OnInit {
+  nombre_usuario: string | null = null;
 
   constructor(private dataService: DataService){}
+
+  ngOnInit(){
+    this.nombre_usuario = sessionStorage.getItem("nombre_usuario");
+  }
 
   es_autenticado(){
     return this.dataService.es_autenticado();

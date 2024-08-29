@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../data.service';
-import 'datatables.net';
-declare var $:any;
-
-
-
 
 @Component({
   selector: 'app-generar-documentos',
@@ -19,7 +14,7 @@ export class GenerarDocumentosComponent implements OnInit {
   btn_enviar_pdf:string = 'Enviar correo';
 
   participantes:any[] = [];
-
+  id_coordinador = sessionStorage.getItem("id_usuario");
 
   constructor(private api: DataService){}
 
@@ -32,17 +27,17 @@ export class GenerarDocumentosComponent implements OnInit {
   obtener_participantes(){
     this.api.get_participants().subscribe((data:any) => {
       this.participantes = data;
-      //console.log(this.participantes);
-    })
+      let encontrar_usuario_coordinador = this.participantes.find((participante:any) => {return participante.id_participante == this.id_coordinador});
+      this.participantes = this.participantes.filter((participante:any) => {return participante.Evento == encontrar_usuario_coordinador.Evento});
+    });
   }
 
-
+  
+  
   generarPDF(){
     this.participantes.forEach((participante) => {
-      //console.log(participante);
       this.api.generate_document(participante);
     });
-   
   }
 
   

@@ -35,10 +35,10 @@ export class RegistroComponent {
     const email = form.value.email;
     const password = form.value.password;
     const password_confirmation = form.value.password_confirmation;
-    const institutions_id =  +form.value.institutions_id;
+    const institution_id =  +form.value.institutions_id;
     
     let registro = new Registro(paternalSurname, maternalSurname, names,
-                                gender, phoneNumber, email, password, password_confirmation, institutions_id
+                                gender, phoneNumber, email, password, password_confirmation, institution_id
     );
     this.api_registro.insert_participant(registro);
   }

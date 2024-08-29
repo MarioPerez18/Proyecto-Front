@@ -1,89 +1,208 @@
 <app-administrador>
-    <div class="card mb-4">
-        <div class="card-header">
-            Registrar eventos
+  <div class="card mb-4">
+    <div class="card-header">Registrar eventos</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && registrar_evento(f)">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nameEvent"
+            name="nameEvent"
+            aria-describedby="emailHelp"
+            placeholder="Ingrese el nombre"
+            ngModel
+            required
+          />
         </div>
-        <div class="card-body">
-            <form method="POST" action="" >
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nombre:</label>
-                    <input name="nombre" type="text" class="form-control" aria-describedby="emailHelp"
-                        placeholder="Ingrese el nombre" required>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Descripción:</label>
-                    <input name="descripcion" type="text" class="form-control" placeholder="Descripción del evento"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Fecha de Inicio:</label>
-                    <input name="fechaInicio" type="datetime" class="form-control" placeholder="Ej: 2023-10-01 12:00:00"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Fecha de Fin:</label>
-                    <input name="fechaFin" type="datetime" class="form-control" placeholder="Ej: 2023-10-02 14:00:00"
-                        required>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Descripción:</label
+          >
+          <input
+            type="text"
+            id="description"
+            name="description"
+            class="form-control"
+            placeholder="Descripción del evento"
+            ngModel
+            required
+          />
         </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Fecha de Inicio:</label
+          >
+          <input
+            type="datetime"
+            id="startDate"
+            name="startDate"
+            class="form-control"
+            placeholder="Ej: 2023-10-01 12:00:00"
+            ngModel
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Fecha de Fin:</label
+          >
+          <input
+            type="datetime"
+            id="endDate"
+            name="endDate"
+            class="form-control"
+            placeholder="Ej: 2023-10-02 14:00:00"
+            ngModel
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
     </div>
+  </div>
 
-   
-    <div class="card">
-        <div class="card-header">
-          <h3 class="card-title text-body">Eventos</h3>
-          <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-              <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title text-body">Eventos</h3>
+      <div class="card-tools">
+        <div class="input-group input-group-sm" style="width: 150px">
+          <input
+            type="text"
+            name="table_search"
+            class="form-control float-right"
+            placeholder="Search"
+          />
 
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-default">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-default">
+              <i class="fas fa-search"></i>
+            </button>
           </div>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0" style="height: 300px;">
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0" style="height: 300px">
+      <table class="table table-head-fixed text-nowrap">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            <th>Asigna Coordinador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let evento of eventos;">
+            <td>{{ evento.id }}</td>
+            <td>{{ evento.nameEvent }}</td>
+            <td>{{ evento.description }}</td>
+            <td>{{ evento.startDate }}</td>
+            <td>{{ evento.endDate }}</td>
+            <td>
+              <a 
+                class="btn btn-primary" 
+                [routerLink]="['/administrador/eventos',evento.nameEventUri.replaceAll(' ', '-')]">
+                <i class="fas fa-fw fa-pen-nib"></i>
+              </a>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="eliminar_evento(evento.id)">
+                <i class="fas fa-fw fa-trash"></i>
+              </button>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal"
+                (click)="recuperar_id_evento(evento.id)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person-plus-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
           <table class="table table-head-fixed text-nowrap">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Fin</th>
-                <th>Editar</th>
-                <th>Eliminar</th>  
+                <th>Num</th>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Seleccionar</th>
               </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let evento of eventos">
-                    <td>{{evento.id}}</td>
-                    <td> {{evento.nameEvent}}</td>
-                    <td>{{evento.description}}</td>
-                    <td>{{evento.startDate}}</td>
-                    <td>{{evento.endDate}}</td>
-                    <td>
-                        <a class="btn btn-primary" href="">
-                            <i class="fas fa-fw fa-pen-nib"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <form action="" method="POST">
-                      
-                         <button class="btn btn-danger">
-                            <i class="fas fa-fw fa-trash"></i>
-                         </button>
-                         </form>
-                    </td>
-                </tr>
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.names }}</td>
+                <td>{{ usuario.paternalSurname }}</td>
+                <td>{{ usuario.maternalSurname }}</td>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="" checked
+                    (click)="recupera_id_usuario(usuario.id)">
+                    <label class="form-check-label" for="exampleRadios1"></label>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <!-- /.card-body -->
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button type="button" class="btn btn-success" (click)="asignar_coordinador()">
+            Asignar
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </app-administrador>
