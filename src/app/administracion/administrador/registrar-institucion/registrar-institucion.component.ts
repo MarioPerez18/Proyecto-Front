@@ -32,6 +32,10 @@ export class RegistrarInstitucionComponent implements OnInit {
     });
   }
 
+  arreglo_instituciones_vacio(){
+    return this.instituciones.length > 0;
+  }
+
   
   obtener_tipos_de_instituciones() {
     this.api.get_institutions_types().subscribe((data: any) => {

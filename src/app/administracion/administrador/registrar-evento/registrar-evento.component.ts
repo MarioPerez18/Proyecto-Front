@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 
-
 @Component({
   selector: 'app-registrar-evento',
   templateUrl: './registrar-evento.component.html',
@@ -16,14 +15,17 @@ export class RegistrarEventoComponent implements OnInit {
   id_usuario: number = 0;
   id_evento: number = 0;
   id:number = 0;
- 
+
+  
   constructor(private api: DataService) {}
 
   ngOnInit() {
     this.obtener_eventos();
     this.obtener_usuarios();
   }
-  
+
+
+
   obtener_eventos() {
     this.api.get_events().subscribe((data: any) => {
       this.eventos = data;
@@ -32,6 +34,10 @@ export class RegistrarEventoComponent implements OnInit {
         this.id = evento.id
       });
     });
+  }
+
+  arreglo_eventos_vacio(){
+    return this.eventos.length > 0;
   }
 
   obtener_usuarios() {

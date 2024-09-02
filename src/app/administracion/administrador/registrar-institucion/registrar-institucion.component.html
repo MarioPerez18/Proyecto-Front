@@ -26,13 +26,16 @@
                         </option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Registrar</button>
             </form>
         </div>
     </div>
 
+    <div class="p-3" *ngIf="!arreglo_instituciones_vacio()">
+        <h2 class="text-center lead">Aún no hay institutos registrados</h2>
+    </div>
 
-    <div class="card">
+    <div class="card" *ngIf="arreglo_instituciones_vacio()">
         <div class="card-header">
           <h3 class="card-title">Instituciones</h3>
           <div class="card-tools">
