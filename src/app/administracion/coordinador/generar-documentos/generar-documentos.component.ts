@@ -30,8 +30,8 @@ export class GenerarDocumentosComponent implements OnInit {
 
   ngOnInit(){
     this.obtener_participantes();   
-    this.coordenada_x = this.route.snapshot.params['coordenada_x'];
-    this.coordenada_y = this.route.snapshot.params['coordenada_y'];
+    this.coordenada_x = this.route.snapshot.params['coordenada_x_mm'];
+    this.coordenada_y = this.route.snapshot.params['coordenada_y_mm'];
     console.log(this.coordenada_x);
   }
 
@@ -56,7 +56,7 @@ export class GenerarDocumentosComponent implements OnInit {
         coordenada_y:+this.coordenada_y
       }
       //quedó pendiente
-      this.api.generate_document(participante);
+      this.api.generate_document(genera_documento);
       //console.log(genera_documento);
     });
   }

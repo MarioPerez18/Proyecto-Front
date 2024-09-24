@@ -17,9 +17,12 @@ export class DocumentoParticipanteComponent implements OnInit {
   plantilla:any[];
   url_plantilla:string;
   tipo_plantilla:string;
-
+  coordenada_x_mm:number;
+  coordenada_y_mm:number;
   coordenada_x:number;
   coordenada_y:number;
+
+ 
 
 
   constructor(private api: DataService,private route: ActivatedRoute, private router: Router){}
@@ -61,9 +64,15 @@ export class DocumentoParticipanteComponent implements OnInit {
     this.coordenada_x =  Math.trunc(rect.x);
     this.coordenada_y =  Math.trunc(rect.y);
 
+    /*//convertir de px a mm
+    this.coordenada_x_mm = Math.trunc(this.coordenada_x/3.7795280352161);
+    this.coordenada_y_mm = Math.trunc(this.coordenada_y/3.7795280352161);*/
+    this.coordenada_x_mm = 76;
+    this.coordenada_y_mm = 88;
+
     const coordenadas = {
-      coordenada_x:this.coordenada_x,
-      coordenada_y:this.coordenada_y
+      coordenada_x:this.coordenada_x_mm,
+      coordenada_y:this.coordenada_y_mm 
     }
 
     console.log('Nuevas coordenadas:', coordenadas);
