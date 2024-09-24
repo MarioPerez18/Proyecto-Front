@@ -1,0 +1,34 @@
+.contenedor_principal{
+    background-color: rgb(49, 50, 52);
+    
+    height: 100vh;
+   
+}
+
+.imagen{
+    width: 300mm;
+    height: 100%;
+}
+
+.contenedor_datos {
+    color: rgb(0, 0, 0);
+    display: flex;
+    position: absolute;
+    cursor: grab;
+    top: 43%;
+    left: 47%;
+    right: 48%;
+}
+
+.contenedor_datos p{
+    padding: 2px;
+}
+
+
+.contenedor-botones{
+    background-color: rgb(49, 50, 52);
+    width: 100%;
+    padding: 5px;
+}
+
+

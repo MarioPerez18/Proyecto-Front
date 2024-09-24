@@ -4,17 +4,25 @@ import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
 
+
+
 @Component({
   selector: 'app-registrar-institucion',
   templateUrl: './registrar-institucion.component.html',
   styleUrls: ['./registrar-institucion.component.css'],
 })
+
+
+
 export class RegistrarInstitucionComponent implements OnInit {
   instituciones: any[] = [];
   tipos_de_instituciones: any[] = [];
   id:number = 0;
+ 
+  
 
   constructor(private api: DataService, private router:Router) {}
+
 
   ngOnInit() {
     this.obtener_instituciones();
@@ -24,10 +32,8 @@ export class RegistrarInstitucionComponent implements OnInit {
   obtener_instituciones() {
     this.api.get_institutions().subscribe((data: any) => {
       this.instituciones = data;
-      //console.log(data);
       data.forEach((institucion:any) => {
         this.id = institucion.id;
-        //console.log(institucion.id)
       });
     });
   }
@@ -41,21 +47,36 @@ export class RegistrarInstitucionComponent implements OnInit {
     this.api.get_institutions_types().subscribe((data: any) => {
       this.tipos_de_instituciones = data;
     });
+
+    
   }
+
+ 
 
   registrar_instituto(form: NgForm) {
     const shortName = form.value.shortName;
     const longName = form.value.longName;
     const institution_type_id = +form.value.institution_type_id;
+    const longNameUri = longName.toLowerCase();
+    
 
+    const institution_type = this.tipos_de_instituciones.find((institucion:any)=>{
+      return institucion.id == institution_type_id;
+    });
+
+    
     const institution = {
       id: ++this.id,
       shortName,
       longName,
+      institution_type,
+      longNameUri,
       institution_type_id,
     };
 
-    this.api.register_institution(institution).subscribe(
+   
+    
+   this.api.register_institution(institution).subscribe(
       (respuesta: any) => {
         Swal.fire({
           title: respuesta.respuesta,
@@ -72,7 +93,7 @@ export class RegistrarInstitucionComponent implements OnInit {
         });
       }
     );
-    //console.log(institution);
+    
   }
 
 
@@ -103,6 +124,5 @@ export class RegistrarInstitucionComponent implements OnInit {
         ) 
       }
     });
-    //console.log(id_institucion);
   }
 }

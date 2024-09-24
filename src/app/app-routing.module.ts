@@ -11,6 +11,8 @@ import { ParticipantesComponent } from './participantes/participantes.component'
 import { EventosComponent } from './participantes/eventos/eventos.component';
 import { EditarEventoComponent } from './administracion/administrador/editar-evento/editar-evento.component';
 import { EditarInstitucionComponent } from './administracion/administrador/editar-institucion/editar-institucion.component';
+import { DocumentoParticipanteComponent } from './administracion/coordinador/generar-documentos/documento-participante/documento-participante.component';
+import { RegistrarTipoParticipanteComponent } from './administracion/coordinador/registrar-tipo-participante/registrar-tipo-participante.component';
 
 
 
@@ -26,7 +28,10 @@ const routes: Routes = [
   {path: 'administrador/instituciones', component:RegistrarInstitucionComponent},
   {path: 'administrador/instituciones/:institucion', component:EditarInstitucionComponent},
   {path: 'coordinador', component:CoordinadorComponent},
-  {path: 'coordinador/documentos', component:GenerarDocumentosComponent}
+  {path: 'coordinador/tipos-de-participantes', component:RegistrarTipoParticipanteComponent},
+  {path: 'coordinador/documentos', component:GenerarDocumentosComponent},
+  {path: 'coordinador/documentos/:coordenada_x/:coordenada_y', component:GenerarDocumentosComponent},
+  {path: 'coordinador/documentos/:tipo_participante', component:DocumentoParticipanteComponent}
 ];
 
 @NgModule({

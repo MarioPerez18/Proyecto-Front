@@ -1,0 +1,141 @@
+<app-coordinador>
+    <div class="card mb-4">
+        <div class="card-header">Registrar Tipos de participantes</div>
+        <div class="card-body">
+          <form #f="ngForm" (ngSubmit)="f.form.valid && registrar_tipos_de_participantes(f)">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Tipo de participante:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="participantType"
+                name="participantType"
+                aria-describedby="emailHelp"
+                placeholder="Ejemplo: Ponente"
+                ngModel
+                required
+                #inputTipoParticipante="ngModel"
+              />
+            </div>
+            <!--
+            <div class="alert alert-danger mt-1" *ngIf="inputTipoParticipante.invalid">
+                El campo es obligatorio obligatorio
+            </div>
+            -->
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Tipos de participantes</h3>
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+              <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+                <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                    <th scope="col">Asociar plantilla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tipo_participante of tipos_de_participantes">
+                    <td>{{tipo_participante.participantType}}</td>
+                    <td>
+                        <a class="btn btn-primary">
+                            <i class="fas fa-fw fa-pen-nib"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">
+                           <i class="fas fa-fw fa-trash"></i>
+                        </button>
+                    </td>
+                    <td>
+                      <button
+                      type="button"
+                      class="btn btn-success"
+                      data-bs-toggle="modal"
+                      data-bs-target="#myModal"
+                      (click)="recuperar_id_tipo_participante(tipo_participante.id)"
+                      >
+
+                        <i class="fas fa-file"></i>
+                      </button>
+                      
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+
+
+    <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+              <tr>
+                <th>Tipo de documento</th>
+                <th>Descripcion</th>
+                <th>Seleccionar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tipo_documento of tipos_de_documentos">
+                <td>{{ tipo_documento.type }}</td>
+                <td>{{ tipo_documento.description }}</td>
+                <td>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="" checked
+                    (click)="recupera_id_documento(tipo_documento.id)">
+                    <label class="form-check-label" for="exampleRadios1"></label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button type="button" class="btn btn-success" (click)="asignar_plantilla()">
+            Asignar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-coordinador>

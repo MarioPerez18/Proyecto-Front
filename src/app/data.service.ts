@@ -82,6 +82,42 @@ export class DataService{
         );
     }
 
+    //Se recuperan todos los tipos de documentos
+    get_document_types(){
+        return this.httpclient.get('http://localhost:8000/api/document_type', this.getHttpHeaders());
+    }
+
+    
+    //Se recupera solo un tipo de documento
+    get_document_type(tipo_participante:string){
+        return this.httpclient.get(`http://localhost:8000/api/type_document/${tipo_participante}`, this.getHttpHeaders());
+    } 
+
+
+    register_participant_type(tipoParticipante:any){
+        this.httpclient.post('http://localhost:8000/api/participant-types', tipoParticipante, this.getHttpHeaders())
+        .subscribe(
+            (respuesta:any) => {
+                Swal.fire({
+                    title: respuesta.respuesta,
+                    icon: respuesta.icono,
+                    confirmButtonText: 'Ok'
+                })
+            },
+            error =>
+                Swal.fire({
+                    title: "No se pudo proceder",
+                    icon: "error",
+                    confirmButtonText: 'Ok'
+                })
+        )
+    }
+
+    get_participant_types(){
+        return this.httpclient.get('http://localhost:8000/api/participant-types', this.getHttpHeaders());
+    }
+
+
     //Obtener los eventos
     get_events(){
         return this.httpclient.get('http://localhost:8000/api/events', this.getHttpHeaders());
@@ -117,6 +153,27 @@ export class DataService{
     //registrar un nuevo evento
     register_new_event(evento:any){
         return this.httpclient.post('http://localhost:8000/api/events', evento, this.getHttpHeaders());  
+    }
+
+    asignar_tipo_participante_a_evento(evento_participante:any){
+        this.httpclient.put('http://localhost:8000/api/event-participant-type', evento_participante, this.getHttpHeaders())
+        .subscribe(
+            (respuesta:any) => {
+                Swal.fire({
+                    title: respuesta.asociado,
+                    icon: respuesta.icono,
+                    confirmButtonText: 'Ok'
+                })
+            },
+            error => {
+                Swal.fire({
+                    title: "No se pudo asociar",
+                    icon: "error",
+                    confirmButtonText: 'Ok'
+                })
+            }
+        )
+
     }
 
     //el participante se registra a un evento
@@ -165,6 +222,27 @@ export class DataService{
                     confirmButtonText: 'Ok'
                 })
         );   
+
+    }
+
+    //asociar al participante su plantilla
+    asignar_plantilla_participante(plantilla_participante:any){
+        this.httpclient.post('http://localhost:8000/api/participant-type-document-type', plantilla_participante, this.getHttpHeaders())
+        .subscribe(
+            (respuesta:any) => {
+                Swal.fire({
+                    title: respuesta.registrado,
+                    icon: respuesta.icono,
+                    confirmButtonText: 'Ok'
+                })
+            },
+            error => 
+                Swal.fire({
+                    title: error.error.registrado,
+                    icon: "error",
+                    confirmButtonText: 'Ok'
+                })
+        )
 
     }
 

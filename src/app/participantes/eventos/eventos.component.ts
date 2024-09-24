@@ -30,7 +30,7 @@ export class EventosComponent implements OnInit {
     const usuario = {
       user_id:this.id_usuario = Number(sessionStorage.getItem("id_usuario")),
       event_id:id_evento,
-      participant_type_id:1
+      participant_type_id:2
     }
 
     this.api.register_event(usuario);
