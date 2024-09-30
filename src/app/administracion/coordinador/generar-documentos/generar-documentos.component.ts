@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-
+import { CoordenadasService } from './coordenadas.service';
 
 @Component({
   selector: 'app-generar-documentos',
@@ -21,18 +21,20 @@ export class GenerarDocumentosComponent implements OnInit {
   id_coordinador = sessionStorage.getItem("id_usuario");
   dataSource = new MatTableDataSource();
   
-  coordenada_x:number;
-  coordenada_y:number;
+  coordenada_x:any;
+  coordenada_y:any;
 
   
-  constructor(private api: DataService, private route: ActivatedRoute){}
+  constructor(private api: DataService, private route: ActivatedRoute, private coordenadasService: CoordenadasService,
+    private coordenadas: CoordenadasService
+  ){}
 
 
   ngOnInit(){
-    this.obtener_participantes();   
-    this.coordenada_x = this.route.snapshot.params['coordenada_x_mm'];
-    this.coordenada_y = this.route.snapshot.params['coordenada_y_mm'];
-    console.log(this.coordenada_x);
+    this.obtener_participantes(); 
+    //this.coordenada_x = this.route.snapshot.params['coordenada_x_mm'];
+    //this.coordenada_y = this.route.snapshot.params['coordenada_y_mm'];
+    //console.log(this.coordenada_x);
   }
 
 
@@ -46,18 +48,17 @@ export class GenerarDocumentosComponent implements OnInit {
   }
 
 
-
   generarPDF(){
     let genera_documento;
+
     this.participantes.forEach((participante) => {
       genera_documento = {
         participante,
-        coordenada_x:+this.coordenada_x,
-        coordenada_y:+this.coordenada_y
+        coordenada_x:this.coordenadas.coordenadass[0].coordenada_x -40,
+        coordenada_y:this.coordenadas.coordenadass[0].coordenada_y
       }
-      //quedó pendiente
-      this.api.generate_document(genera_documento);
       //console.log(genera_documento);
+      this.api.generate_document(genera_documento);
     });
   }
 

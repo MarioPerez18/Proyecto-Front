@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
+import Swal from 'sweetalert2'
 
 interface ParticipantType{
   id:number,
@@ -24,6 +25,7 @@ export class RegistrarTipoParticipanteComponent implements OnInit {
   tipos_de_documentos: DocumentType[];
   id_tipo_participante:number;
   id_tipo_documento:number;
+  id_participante_tipo:number;
 
 
   constructor(private api: DataService){}
@@ -38,6 +40,9 @@ export class RegistrarTipoParticipanteComponent implements OnInit {
   obtener_tipos_de_participantes(){
     this.api.get_participant_types().subscribe((data:any) => {
       this.tipos_de_participantes = data;
+      data.forEach((tipo:any) => {
+        this.id_participante_tipo = tipo.id;
+      });
     });
   }
 
@@ -60,10 +65,28 @@ export class RegistrarTipoParticipanteComponent implements OnInit {
 
   registrar_tipos_de_participantes(form: NgForm){
     
-    const tipo_participante = {
+    const tipo_participante: ParticipantType = {
+      id: ++this.id_participante_tipo,
       participantType:form.value.participantType
     };
-    this.api.register_participant_type(tipo_participante);
+    
+    this.api.register_participant_type(tipo_participante)
+    .subscribe(
+      (respuesta:any) => {
+          Swal.fire({
+              title: respuesta.respuesta,
+              icon: respuesta.icono,
+              confirmButtonText: 'Ok'
+          })
+          this.tipos_de_participantes.push(tipo_participante);
+      },
+      error =>
+          Swal.fire({
+              title: "No se pudo proceder",
+              icon: "error",
+              confirmButtonText: 'Ok'
+          })
+    );
   }
 
   asignar_plantilla(){

@@ -30,7 +30,6 @@ const routes: Routes = [
   {path: 'coordinador', component:CoordinadorComponent},
   {path: 'coordinador/tipos-de-participantes', component:RegistrarTipoParticipanteComponent},
   {path: 'coordinador/documentos', component:GenerarDocumentosComponent},
-  {path: 'coordinador/documentos/:coordenada_x_mm/:coordenada_y_mm', component:GenerarDocumentosComponent},
   {path: 'coordinador/documentos/:tipo_participante', component:DocumentoParticipanteComponent}
 ];
 

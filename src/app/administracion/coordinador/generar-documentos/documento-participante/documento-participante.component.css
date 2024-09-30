@@ -1,34 +1,56 @@
-.contenedor_principal{
-    background-color: rgb(49, 50, 52);
-    
-    height: 100vh;
-   
+.contenedor-a4 {
+    width: 80vw;
+    height: calc(80vw * 210 / 297);  /* Mantener proporción A4 */
+    max-width: 300mm;
+    max-height: 210mm;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative;  /* Necesario para posicionar el contenido relativo a este contenedor */
 }
 
-.imagen{
-    width: 300mm;
-    height: 100%;
+/* Imagen de fondo que se adapta al contenedor A4 */
+.background-image {
+    width: 100%;  /* Ancho completo del contenedor */
+    height: 100%; /* Altura completa del contenedor */
+    object-fit: cover;  /* La imagen se ajusta sin distorsionarse */
+    position: absolute;  /* La imagen está detrás del contenido */
+    top: 0;
+    left: 0;
+    z-index: 1;  /* La imagen tiene un z-index menor, por lo que está detrás */
 }
 
-.contenedor_datos {
-    color: rgb(0, 0, 0);
-    display: flex;
-    position: absolute;
-    cursor: grab;
-    top: 43%;
-    left: 47%;
-    right: 48%;
+/* Div que aparece delante de la imagen */
+.content-overlay {
+    z-index: 2;  /* El contenido está por delante de la imagen */
+    cursor: move;
 }
 
-.contenedor_datos p{
-    padding: 2px;
+/* Estilo del texto dentro del div de superposición */
+.text-overlay {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: black;
 }
 
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contenedor-a4 {
+        width: 90vw;
+        height: calc(90vw * 210 / 297);
+    }
 
-.contenedor-botones{
-    background-color: rgb(49, 50, 52);
-    width: 100%;
-    padding: 5px;
+    .text-overlay {
+        font-size: 4vw;
+    }
 }
 
+@media (max-width: 480px) {
+    .contenedor-a4 {
+        width: 95vw;
+        height: calc(95vw * 210 / 297);
+    }
 
+    .text-overlay {
+        font-size: 5vw;
+    }
+}

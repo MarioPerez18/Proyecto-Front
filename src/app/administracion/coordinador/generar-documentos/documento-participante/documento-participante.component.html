@@ -21,12 +21,14 @@
     </div>
 </div>-->
 
-<div class=" contenedor_principal">
-    <img class="imagen mx-auto d-block w-auto" [src]="url_plantilla"  [alt]="tipo_plantilla">
-    <div class="contenedor_datos" cdkDrag (cdkDragReleased)="onDragReleased($event)" *ngFor="let participante of participantes">
-        <p>{{participante.Nombres}}</p>
-        <p>{{participante.ApellidoPaterno}}</p>
-        <p>{{participante.ApellidoMaterno}}</p>
+<!--
+
+<div class="contenedor_principal">
+    <div #dragContainer class="bg-primary contenedor_secundario container-fluid d-flex justify-content-center">
+        <img class="imagen mx-auto d-block w-auto" [src]="url_plantilla"  [alt]="tipo_plantilla">
+        <div class="contenedor_datos" cdkDragBoundary=".contenedor_secundario" (cdkDragReleased)="onDragReleased($event)" *ngFor="let participante of participantes" cdkDrag>
+            <p class="texto">{{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}</p>
+        </div>
     </div>
     <div class="container-fluid d-flex justify-content-center contenedor-botones">
         <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
@@ -34,8 +36,64 @@
     </div>   
 </div>
 
+-->
+
+<!--
+<div class="example-boundary d-flex justify-content-center">
+    <div class="example-boundary_dos">
+        <img class="imagen mx-auto d-block w-auto" [src]="url_plantilla"  [alt]="tipo_plantilla">
+        <p  *ngFor="let participante of participantes" class="example-box" cdkDragBoundary=".example-boundary_dos" cdkDrag>
+            {{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}
+        </p>
+    </div>
+</div>
+  
+-->
+
+<!--
+<div class="contenedor-padre container-fluid">
+    <div #dragContainer class="container">
+        <img [src]="url_plantilla" class="background-image img-fluid">
+        <div *ngFor="let participante of participantes" class="content" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".container" cdkDrag>
+            {{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}
+        </div>
+    </div>
+    <div class="container-fluid d-flex justify-content-center contenedor-botones">
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <a class="btn btn-primary ms-1" [routerLink]="['/coordinador/documentos',coordenada_x_mm, coordenada_y_mm]">Aceptar</a>
+    </div>  
+</div>
+-->
 
 
+<div class="container-fluid d-flex justify-content-center align-items-center bg-light min-vh-100 flex-column">
+    <div #dragContainer class="contenedor-a4 position-relative">
+        <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
+        <div *ngFor="let participante of participantes" class="content-overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+            <div class="draggable-content text-overlay" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                {{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}
+            </div>
+        </div>
+    </div>
+    <div class="mt-2">
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos" (click)="coordenadas()">Aceptar</button>
+    </div>
+</div>
+  
+
+<!--
+<div class="container-fluid d-flex justify-content-center align-items-center bg-light min-vh-100">
+    <div class="contenedor-a4 position-relative">
+        
+        <img [src]="url_plantilla" class="background-image" alt="Imagen de fondo">
+        
+        <div *ngFor="let participante of participantes" class="content-overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"  (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+            {{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}
+        </div>
+    </div>
+</div>
+-->
 
   
   

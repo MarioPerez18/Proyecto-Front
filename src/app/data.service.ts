@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 
 @Injectable()
 export class DataService{
-
+    
     constructor(private httpclient: HttpClient, private router:Router){}
     
 
@@ -95,22 +95,7 @@ export class DataService{
 
 
     register_participant_type(tipoParticipante:any){
-        this.httpclient.post('http://localhost:8000/api/participant-types', tipoParticipante, this.getHttpHeaders())
-        .subscribe(
-            (respuesta:any) => {
-                Swal.fire({
-                    title: respuesta.respuesta,
-                    icon: respuesta.icono,
-                    confirmButtonText: 'Ok'
-                })
-            },
-            error =>
-                Swal.fire({
-                    title: "No se pudo proceder",
-                    icon: "error",
-                    confirmButtonText: 'Ok'
-                })
-        )
+        return this.httpclient.post('http://localhost:8000/api/participant-types', tipoParticipante, this.getHttpHeaders());
     }
 
     get_participant_types(){

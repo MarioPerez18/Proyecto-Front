@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RegistrarTipoParticipanteComponent } from './administracion/coordinador/registrar-tipo-participante/registrar-tipo-participante.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CoordenadasService } from './administracion/coordinador/generar-documentos/coordenadas.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatCheckboxModule     
   ],
-  providers: [DataService, LoginService, RegistroService],
+  providers: [DataService, LoginService, RegistroService, CoordenadasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
