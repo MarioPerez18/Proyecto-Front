@@ -19,6 +19,13 @@
     z-index: 1;  /* La imagen tiene un z-index menor, por lo que está detrás */
 }
 
+.background-image-qr{
+    object-fit: cover;  /* La imagen se ajusta sin distorsionarse */
+    position: absolute;  /* La imagen está detrás del contenido */
+    bottom: 50px;
+    z-index: 1;  /* La imagen tiene un z-index menor, por lo que está detrás */
+}
+
 /* Div que aparece delante de la imagen */
 .content-overlay {
     z-index: 2;  /* El contenido está por delante de la imagen */
@@ -32,11 +39,32 @@
     color: black;
 }
 
+.draggable-content{
+   position: absolute;
+   top: 42%;
+}
+
+.contenedor-descripcion{
+    position: absolute;
+    top: 47%;
+    width: 540px;
+    height: 80px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 18px;
+    color: black;
+}
+
 /* Media queries para pantallas más pequeñas */
 @media (max-width: 768px) {
     .contenedor-a4 {
         width: 90vw;
         height: calc(90vw * 210 / 297);
+    }
+
+    .contenedor-a4 .img {
+        width: 50px;
+        height: 50px;
     }
 
     .text-overlay {

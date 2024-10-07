@@ -4,7 +4,7 @@
     <div class=" d-flex justify-content-between mb-1">
         <h3 class="pt-1 titulo-genera-documentos">{{genera_documentos}}</h3>
         <div class="btn-group" role="group" aria-label="Acciones">
-            <button type="button" (click)="generarPDF()"
+            <button type="button" [disabled]="input_vacio" (click)="generarPDF()"
             class="btn btn-primary">{{btn_generar_pdf}}</button> 
         </div>
     </div>

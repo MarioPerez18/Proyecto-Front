@@ -78,7 +78,12 @@ export class DataService{
                 })
                 //console.log(respuesta);
             },
-            error => console.log("Error al generar los documentos" + error) 
+            (error:any) => 
+                Swal.fire({
+                    title: "Error al generar los documentos",
+                    icon: "error",
+                    confirmButtonText: 'Ok'
+                })
         );
     }
 

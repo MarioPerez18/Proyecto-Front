@@ -21,8 +21,7 @@ export class GenerarDocumentosComponent implements OnInit {
   id_coordinador = sessionStorage.getItem("id_usuario");
   dataSource = new MatTableDataSource();
   
-  coordenada_x:any;
-  coordenada_y:any;
+  input_vacio:boolean = true;
 
   
   constructor(private api: DataService, private route: ActivatedRoute, private coordenadasService: CoordenadasService,
@@ -48,27 +47,41 @@ export class GenerarDocumentosComponent implements OnInit {
   }
 
 
-  generarPDF(){
-    let genera_documento;
-
-    this.participantes.forEach((participante) => {
-      genera_documento = {
-        participante,
-        coordenada_x:this.coordenadas.coordenadass[0].coordenada_x -40,
-        coordenada_y:this.coordenadas.coordenadass[0].coordenada_y
-      }
-      //console.log(genera_documento);
-      this.api.generate_document(genera_documento);
-    });
-  }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+    this.input_vacio = (filterValue != '')? false : true; 
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  
 
+  generarPDF(){
+    let genera_documento;
+
+    /*this.participantes.forEach((participante) => {
+      genera_documento = {
+        participante:this.dataSource.filteredData,
+        coordenada_x:this.coordenadas.coordenadass[0].coordenada_x,
+        coordenada_y:this.coordenadas.coordenadass[0].coordenada_y,
+        coordenada_x_qr:this.coordenadas.coordenadass[0].coordenada_x_qr,
+        coordenada_y_qr:this.coordenadas.coordenadass[0].coordenada_y_qr,
+        coordenada_x_descripcion:this.coordenadas.coordenadass[0].coordenada_x_descripcion,
+        coordenada_y_descripcion:this.coordenadas.coordenadass[0]. coordenada_y_descripcion
+      }
+      //this.api.generate_document(genera_documento);
+      console.log(genera_documento);
+    });*/
+    genera_documento = {
+      participante:this.dataSource.filteredData,
+      coordenada_x:this.coordenadas.coordenadass[0].coordenada_x,
+      coordenada_y:this.coordenadas.coordenadass[0].coordenada_y,
+      coordenada_x_qr:this.coordenadas.coordenadass[0].coordenada_x_qr,
+      coordenada_y_qr:this.coordenadas.coordenadass[0].coordenada_y_qr,
+      coordenada_x_descripcion:this.coordenadas.coordenadass[0].coordenada_x_descripcion,
+      coordenada_y_descripcion:this.coordenadas.coordenadass[0]. coordenada_y_descripcion
+    }
+    this.api.generate_document(genera_documento);
+    //console.log(genera_documento);
+  }
 }
 
