@@ -1,0 +1,88 @@
+<div *ngIf="coordinador()" class="container-fluid d-flex justify-content-center align-items-center bg-light min-vh-100 flex-column">
+    <div #dragContainer class="contenedor-a4 position-relative">
+        <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
+        <div  class="content-overlay position-relative  w-100 h-100"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+            <div #divNombre *ngIf="showDiv"  class="draggable-content text-overlay" [ngStyle]="{top:position_nombres.x + 'px', left:position_nombres.y + 'px' }"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="text-center">Nombre completo del participante.</p>
+            </div> 
+
+            <div #divImagen *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
+                [ngStyle]="{top:position_imagen.x + 'px', left:position_imagen.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p>Imagen png qr</p>
+            </div>
+            
+            <div #divDescripcion *ngIf="descripcionDiv" class="contenedor-descripcion d-flex justify-content-center align-items-center"
+                [ngStyle]="{top:position_descripcion.x + 'px', left:position_descripcion.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p>
+                    Descripción.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="p-3">
+            <input (change)="nombreDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Nombre completo</label>
+        </div>
+        <div class="p-3">
+            <input (change)="descripcioneDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Descripción</label>
+        </div>
+        <div class="p-3">
+            <input (change)="imagenDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Imagen Qrcode</label>
+        </div>
+    </div>
+    <div class="container-fluid d-flex justify-content-center mt-2">
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos">Aceptar</button>
+    </div>
+</div>
+
+
+
+
+
+
+<div *ngIf="ponente()" class="container-fluid d-flex justify-content-center align-items-center bg-light min-vh-100 flex-column">
+    <div #dragContainer class="contenedor-a4 position-relative">
+        <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
+        <div  class="content-overlay position-relative  w-100 h-100"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+            <div #divNombrePonente *ngIf="showDiv"  class="draggable-content text-overlay" [ngStyle]="{top:position_nombres_ponente.x + 'px', left:position_nombres_ponente.y + 'px' }"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="text-center">Nombre completo del participante.</p>
+            </div> 
+
+            <div #divImagenPonente *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
+                [ngStyle]="{top: position_imagen_ponente.x + 'px', left: position_imagen_ponente.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p>Imagen png qr</p>
+            </div>
+            
+            <div #divDescripcionPonente *ngIf="descripcionDiv" class="contenedor-descripcion d-flex justify-content-center align-items-center"
+                [ngStyle]="{top:position_descripcion_ponente.x + 'px', left:position_descripcion_ponente.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p>
+                    Descripción.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="p-3">
+            <input (change)="nombreDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Nombre completo</label>
+        </div>
+        <div class="p-3">
+            <input (change)="descripcioneDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Descripción</label>
+        </div>
+        <div class="p-3">
+            <input (change)="imagenDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Imagen Qrcode</label>
+        </div>
+        
+    </div>
+    <div class="mt-2">
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos">Aceptar</button>
+    </div>
+</div>
+

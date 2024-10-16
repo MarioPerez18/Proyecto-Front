@@ -29,6 +29,7 @@ import { RegistrarTipoParticipanteComponent } from './administracion/coordinador
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CoordenadasService } from './administracion/coordinador/generar-documentos/coordenadas.service';
+import { TipoPlantillaComponent } from './administracion/coordinador/registrar-tipo-participante/tipo-plantilla/tipo-plantilla.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CoordenadasService } from './administracion/coordinador/generar-documen
     EditarInstitucionComponent,
     DocumentoParticipanteComponent,
     RegistrarTipoParticipanteComponent,
+    TipoPlantillaComponent,
 
     
   ],

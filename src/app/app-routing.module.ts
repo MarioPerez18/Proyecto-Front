@@ -13,6 +13,7 @@ import { EditarEventoComponent } from './administracion/administrador/editar-eve
 import { EditarInstitucionComponent } from './administracion/administrador/editar-institucion/editar-institucion.component';
 import { DocumentoParticipanteComponent } from './administracion/coordinador/generar-documentos/documento-participante/documento-participante.component';
 import { RegistrarTipoParticipanteComponent } from './administracion/coordinador/registrar-tipo-participante/registrar-tipo-participante.component';
+import { TipoPlantillaComponent } from './administracion/coordinador/registrar-tipo-participante/tipo-plantilla/tipo-plantilla.component';
 
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'administrador/instituciones/:institucion', component:EditarInstitucionComponent},
   {path: 'coordinador', component:CoordinadorComponent},
   {path: 'coordinador/tipos-de-participantes', component:RegistrarTipoParticipanteComponent},
+  {path: 'coordinador/tipos-plantilla/:tipo-plantilla', component:TipoPlantillaComponent},
   {path: 'coordinador/documentos', component:GenerarDocumentosComponent},
   {path: 'coordinador/documentos/:tipo_participante', component:DocumentoParticipanteComponent}
 ];
