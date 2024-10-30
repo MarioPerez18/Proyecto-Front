@@ -2,18 +2,18 @@
     <div #dragContainer class="contenedor-a4 position-relative">
         <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
         <div  class="content-overlay position-relative  w-100 h-100"  cdkDragBoundary=".contenedor-a4" cdkDrag>
-            <div #divNombre *ngIf="showDiv"  class="draggable-content text-overlay" [ngStyle]="{top:position_nombres.x + 'px', left:position_nombres.y + 'px' }"  cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p class="text-center">Nombre completo del participante.</p>
+            <div #divNombre *ngIf="showDiv"  class="draggable-content text-overlay" [ngStyle]="{top:position_nombres_coordinador.y + 'px', left:position_nombres_coordinador.x + 'px' }"  (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="text-center" style="border-style: dashed;">Nombre completo del participante.</p>
             </div> 
 
             <div #divImagen *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
-                [ngStyle]="{top:position_imagen.x + 'px', left:position_imagen.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p>Imagen png qr</p>
+                [ngStyle]="{top:position_imagen_coordinador.y + 'px', left:position_imagen_coordinador.x + 'px' }" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p style="border-style: dashed;">Imagen png qr</p>
             </div>
             
             <div #divDescripcion *ngIf="descripcionDiv" class="contenedor-descripcion d-flex justify-content-center align-items-center"
-                [ngStyle]="{top:position_descripcion.x + 'px', left:position_descripcion.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p>
+                [ngStyle]="{top:position_descripcion_coordinador.y + 'px', left:position_descripcion_coordinador.x + 'px' }"  (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p style="border-style: dashed;">
                     Descripción.
                 </p>
             </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="container-fluid d-flex justify-content-center mt-2">
         <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
-        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos">Aceptar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/tipos-de-participantes" (click)="coordenadas_coordinador()" >Aceptar</button>
     </div>
 </div>
 
@@ -48,18 +48,18 @@
     <div #dragContainer class="contenedor-a4 position-relative">
         <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
         <div  class="content-overlay position-relative  w-100 h-100"  cdkDragBoundary=".contenedor-a4" cdkDrag>
-            <div #divNombrePonente *ngIf="showDiv"  class="draggable-content text-overlay" [ngStyle]="{top:position_nombres_ponente.x + 'px', left:position_nombres_ponente.y + 'px' }"  cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p class="text-center">Nombre completo del participante.</p>
+            <div #divNombrePonente *ngIf="showDiv"  class="draggable-content text-overlay" [ngStyle]="{top:position_nombres_ponente.x + 'px', left:position_nombres_ponente.y + 'px' }" (cdkDragReleased)="onDragReleased($event)"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="text-center" style="border-style: dashed;">Nombre completo del participante.</p>
             </div> 
 
             <div #divImagenPonente *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
-                [ngStyle]="{top: position_imagen_ponente.x + 'px', left: position_imagen_ponente.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p>Imagen png qr</p>
+                [ngStyle]="{top: position_imagen_ponente.x + 'px', left: position_imagen_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p style="border-style: dashed;">Imagen png qr</p>
             </div>
             
             <div #divDescripcionPonente *ngIf="descripcionDiv" class="contenedor-descripcion d-flex justify-content-center align-items-center"
-                [ngStyle]="{top:position_descripcion_ponente.x + 'px', left:position_descripcion_ponente.y + 'px' }" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p>
+                [ngStyle]="{top:position_descripcion_ponente.x + 'px', left:position_descripcion_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p style="border-style: dashed;">
                     Descripción.
                 </p>
             </div>
@@ -82,7 +82,7 @@
     </div>
     <div class="mt-2">
         <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
-        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos">Aceptar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/tipos-de-participantes" (click)="coordenadas_ponente()">Aceptar</button>
     </div>
 </div>
 

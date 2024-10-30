@@ -25,7 +25,6 @@
     bottom: 70px;
     left: 380px;
     z-index: 1;  /* La imagen tiene un z-index menor, por lo que está detrás */
-    border-style: dashed;
     width: 110px;
     height: 100px;
 }
@@ -47,7 +46,6 @@
    position: absolute;
    height: 50px;
    width: 430px;
-   border-style: dashed;
 }
 
 .contenedor-descripcion{
@@ -59,7 +57,6 @@
     font-family: Arial;
     font-size: 18px;
     color: black;
-    border-style: dashed;
 }
 
 /* Media queries para pantallas más pequeñas */

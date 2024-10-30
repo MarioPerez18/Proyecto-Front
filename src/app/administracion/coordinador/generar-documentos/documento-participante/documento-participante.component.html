@@ -3,13 +3,13 @@
     <div #dragContainer class="contenedor-a4 position-relative">
         <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
         <div *ngFor="let participante of participantes" class="content-overlay position-relative  w-100 h-100 d-flex justify-content-center align-items-center" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-            <div class="draggable-content text-overlay" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                {{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}
+            <div class="draggable-content text-overlay text-center" [ngStyle]="{top:position_nombres.y + 'px', left:position_nombres.x  + 'px'}" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p>{{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}</p>
             </div>
-            <div class="background-image-qr" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+            <div class="background-image-qr" [ngStyle]="{top:position_imagen.y  + 'px',  left:position_imagen.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
                 <img [src]="png_qr" alt="png_qrcode" width="130px" height="130px" class="img">
             </div>
-            <div class="contenedor-descripcion" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+            <div class="contenedor-descripcion"  [ngStyle]="{top:position_descripcion.y + 'px',  left:position_descripcion.x  + 'px'}" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
                 <p>
                     Por su participación como {{tipo_participante}} en el evento Academia Journals:
                     Espacio de trabajo donde se da a conocer los resultados de investigación.
@@ -19,7 +19,7 @@
     </div>
     <div class="mt-2">
         <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
-        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos" (click)="coordenadas()">Aceptar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos" (click)="coordenadas(position_nombres.y,position_nombres.x,position_imagen.y,position_imagen.x,position_descripcion.y,position_descripcion.x)">Aceptar</button>
     </div>
 </div>
   
