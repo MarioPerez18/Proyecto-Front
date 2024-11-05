@@ -238,16 +238,16 @@ export class DocumentoParticipanteComponent implements OnInit {
       this.pixeles_a_mm(position_nombres_y,position_nombres_x,position_imagen_y,position_imagen_x,position_descripcion_y,position_descripcion_x);
     
         const coordenadas = {
-          coordenada_x:this.coordenada_x_mm,
+          coordenada_x:this.coordenada_x_mm -21,
           coordenada_y:this.coordenada_y_mm,
           coordenada_x_qr:this.coordenada_x_mm_qr,
           coordenada_y_qr:this.coordenada_y_mm_qr,
-          coordenada_x_descripcion:this.coordenada_x_mm_descripcion,
-          coordenada_y_descripcion:this.coordenada_y_mm_descripcion
+          coordenada_x_descripcion:this.coordenada_x_mm_descripcion -6 ,
+          coordenada_y_descripcion:this.coordenada_y_mm_descripcion + 1
     
         }
       
-      //this.coordenadasService.agregar_coordenada(coordenadas);
+      this.coordenadasService.agregar_coordenada(coordenadas);
       console.log("Coordenadas_finales: " + " nombres_x: " + coordenadas.coordenada_x + " mm, " + "nombres_y: " + coordenadas.coordenada_y + " mm, "
         + " qr_x: " + coordenadas.coordenada_x_qr + " qr_y: " + coordenadas.coordenada_y_qr + ", descripcion_x: " + coordenadas.coordenada_x_descripcion +
         " descripcion_y: " + coordenadas.coordenada_y_descripcion

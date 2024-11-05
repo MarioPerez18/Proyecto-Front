@@ -20,13 +20,13 @@ export class TipoPlantillaComponent implements OnInit {
   imgDiv: boolean = false;
   
 
-  position_nombres_coordinador = { x:350 , y:360 }; // Coordenadas iniciales
+  position_nombres_coordinador = { x:350 , y:380 }; // Coordenadas iniciales
   position_descripcion_coordinador = {x:300, y:430 };
   position_imagen_coordinador = {x:400, y:630 };
 
-  position_nombres_ponente = { x: 320, y: 370 }; // Coordenadas iniciales
+  position_nombres_ponente = { x: 330, y: 370 }; // Coordenadas iniciales
   position_descripcion_ponente = {x: 385, y: 310};
-  position_imagen_ponente = {x: 642, y: 532};
+  position_imagen_ponente = {x: 643, y: 533};
 
   
   coordenada_x_px:number;
