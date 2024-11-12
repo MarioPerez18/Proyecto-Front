@@ -6,17 +6,21 @@
                 <p class="text-center" style="border-style: dashed;">Nombre completo del participante.</p>
             </div> 
 
-            <div #divImagen *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
-                [ngStyle]="{top:position_imagen_coordinador.y + 'px', left:position_imagen_coordinador.x + 'px' }" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p style="border-style: dashed;">Imagen png qr</p>
-            </div>
-            
             <div #divDescripcion *ngIf="descripcionDiv" class="contenedor-descripcion d-flex justify-content-center align-items-center"
                 [ngStyle]="{top:position_descripcion_coordinador.y + 'px', left:position_descripcion_coordinador.x + 'px' }"  (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p style="border-style: dashed;">
+                <p class="descripcion_txt" style="border-style: dashed;">
                     Descripción.
                 </p>
             </div>
+
+            <div #divImagen *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
+                [ngStyle]="{top:position_imagen_coordinador.y + 'px', left:position_imagen_coordinador.x + 'px' }" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="img_txt" style="border-style: dashed;">Imagen png qr</p>
+            </div>
+            
+            <div #divFechaPonente *ngIf="fecha_finalizacionDiv"  class="contenedor-fecha text-overlay" [ngStyle]="{top:position_fecha_coordinador.x + 'px', left:position_fecha_coordinador.y + 'px' }" (cdkDragReleased)="coordenadas_fecha($event)"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="fecha_txt text-center" style="border-style: dashed;">Fecha.</p>
+            </div> 
         </div>
     </div>
     <div class="container-fluid d-flex justify-content-center">
@@ -32,9 +36,13 @@
             <input (change)="imagenDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
             <label class="form-check-label">Imagen Qrcode</label>
         </div>
+        <div class="p-3">
+            <input (change)="fechaDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Fecha</label>
+        </div>
     </div>
     <div class="container-fluid d-flex justify-content-center mt-2">
-        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/tipos-de-participantes">Cancelar</button>
         <button class="btn btn-primary ms-1" routerLink="/coordinador/tipos-de-participantes" (click)="coordenadas_coordinador()" >Aceptar</button>
     </div>
 </div>
@@ -53,16 +61,20 @@
             </div> 
 
             <div #divImagenPonente *ngIf="imgDiv" class="background-image-qr  d-flex justify-content-center align-items-center"  
-                [ngStyle]="{top: position_imagen_ponente.x + 'px', left: position_imagen_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p style="border-style: dashed;">Imagen png qr</p>
+                [ngStyle]="{top:position_imagen_ponente.x + 'px', left:position_imagen_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="img_txt" style="border-style: dashed;">Imagen png qr</p>
             </div>
             
-            <div #divDescripcionPonente *ngIf="descripcionDiv" class="contenedor-descripcion d-flex justify-content-center align-items-center"
-                [ngStyle]="{top:position_descripcion_ponente.x + 'px', left:position_descripcion_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p style="border-style: dashed;">
-                    Descripción.
+            <div #divDescripcionPonente *ngIf="descripcionDiv"  class="contenedor-descripcion d-flex justify-content-center align-items-center"
+                 style="border-style: dashed;" [ngStyle]="{top:position_descripcion_ponente.x + 'px', left:position_descripcion_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="descripcion_txt">
+                    Descripción
                 </p>
             </div>
+           
+            <div #divFechaPonente *ngIf="fecha_finalizacionDiv" style="border-style: dashed;"  class="contenedor-fecha" [ngStyle]="{top:position_fecha_ponente.x + 'px', left:position_fecha_ponente.y + 'px' }" (cdkDragReleased)="coordenadas_fecha($event)"  cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="text-center">Fecha finalización</p>
+            </div> 
         </div>
     </div>
     <div class="container-fluid d-flex justify-content-center">
@@ -78,10 +90,14 @@
             <input (change)="imagenDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
             <label class="form-check-label">Imagen Qrcode</label>
         </div>
+        <div class="p-3">
+            <input (change)="fechaDiv($event)" class="form-check-input" type="checkbox" id="check1" name="option1" value="something" style="border-color: black;">
+            <label class="form-check-label">Fecha</label>
+        </div>
         
     </div>
     <div class="mt-2">
-        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/tipos-de-participantes">Cancelar</button>
         <button class="btn btn-primary ms-1" routerLink="/coordinador/tipos-de-participantes" (click)="coordenadas_ponente()">Aceptar</button>
     </div>
 </div>

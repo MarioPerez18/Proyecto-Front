@@ -22,22 +22,23 @@ export class DocumentoParticipanteComponent implements OnInit {
   
   coordenada_x_mm:number;
   coordenada_y_mm:number;
-  //coordenada_x:number;
-  //coordenada_y:number;
+ 
 
   coordenada_x_mm_qr:number;
   coordenada_y_mm_qr:number;
-  //coordenada_x_qr:number;
-  //coordenada_y_qr:number;
+
 
   coordenada_x_mm_descripcion:number;
   coordenada_y_mm_descripcion:number;
-  //coordenada_x_descripcion:number;
-  //coordenada_y_descripcion:number;
+
+
+  coordenada_x_mm_fecha:number;
+  coordenada_y_mm_fecha:number;
 
   position_nombres:any; // Coordenadas iniciales
   position_descripcion:any;
   position_imagen:any;
+  position_fecha:any;
 
 
   constructor(private api: DataService,private route: ActivatedRoute, private router: Router,
@@ -61,6 +62,7 @@ export class DocumentoParticipanteComponent implements OnInit {
         this.position_nombres = {x:this.coordenadasService.coordenadass_ponente[0].coordenada_x, y:this.coordenadasService.coordenadass_ponente[0].coordenada_y};
         this.position_descripcion = {x:this.coordenadasService.coordenadass_ponente[0].coordenada_x_descripcion, y:this.coordenadasService.coordenadass_ponente[0].coordenada_y_descripcion};
         this.position_imagen = {x:this.coordenadasService.coordenadass_ponente[0].coordenada_x_qr, y:this.coordenadasService.coordenadass_ponente[0].coordenada_y_qr};
+        this.position_fecha = {x:this.coordenadasService.coordenadass_ponente[0].coordenada_y_fecha, y:this.coordenadasService.coordenadass_ponente[0].coordenada_x_fecha};
         break;
       default:
         console.log("algo salió mal");
@@ -182,34 +184,10 @@ export class DocumentoParticipanteComponent implements OnInit {
 
   }
 
-  
-  /*oordenadas(){
-    const coordenadas = {
-      coordenada_x:this.coordenada_x_mm,
-      coordenada_y:this.coordenada_y_mm,
-      coordenada_x_qr:this.coordenada_x_mm_qr,
-      coordenada_y_qr:this.coordenada_y_mm_qr,
-      coordenada_x_descripcion:this.coordenada_x_mm_descripcion,
-      coordenada_y_descripcion:this.coordenada_y_mm_descripcion
 
-    }
-    this.coordenadasService.agregar_coordenada(coordenadas);
-    console.log(coordenadas);
-  }*/
-
-    /*pixelsToMm = (pixels:any) => {
-      const ppi = 96; // resolución estándar
-      const inches = pixels / ppi; // convertimos a pulgadas
-      const mm = inches * 25.4; // convertimos a milímetros
-      return mm;
-
-      const ppi = 96; // resolución estándar
-      const inches = pixels / ppi; // convertimos a pulgadas
-      const mm = inches * 25.4; // convertimos a milímetros
-      return mm;
-    };*/
-
-    pixeles_a_mm(nombres_y_px:number, nombres_x_px:number,imagen_y_px:number,imagen_x_px:number,descripcion_y_px:number,descripcion_x_px:number){
+    pixeles_a_mm(nombres_y_px:number, nombres_x_px:number,imagen_y_px:number,imagen_x_px:number,descripcion_y_px:number,descripcion_x_px:number,
+                 fecha_y_px:number,fecha_x_px:number
+    ){
       const ppi = 96; // resolución estándar
 
       const pulgadas_y_nombres = nombres_y_px / ppi; // convertir a pulgadas
@@ -230,21 +208,28 @@ export class DocumentoParticipanteComponent implements OnInit {
       const pulgadas_x_descripcion = descripcion_x_px / ppi; // convertir a pulgadas
       this.coordenada_x_mm_descripcion = Math.trunc(pulgadas_x_descripcion  * 25.4); // convertir a milímetros
 
+      const pulgadas_y_fecha = fecha_y_px / ppi; // convertir a pulgadas
+      this.coordenada_y_mm_fecha = Math.trunc(pulgadas_y_fecha  * 25.4); // convertir a milímetros
+
+      const pulgadas_x_fecha = fecha_x_px / ppi; // convertir a pulgadas
+      this.coordenada_x_mm_fecha = Math.trunc(pulgadas_x_fecha  * 25.4); // convertir a milímetros
+
     }
 
 
 
-    coordenadas(position_nombres_y:number, position_nombres_x:number, position_imagen_y:number, position_imagen_x:number,position_descripcion_y:number,position_descripcion_x:number){
-      this.pixeles_a_mm(position_nombres_y,position_nombres_x,position_imagen_y,position_imagen_x,position_descripcion_y,position_descripcion_x);
+    coordenadas(position_nombres_y:number, position_nombres_x:number, position_imagen_y:number, position_imagen_x:number,position_descripcion_y:number,position_descripcion_x:number,position_fecha_y:number, position_fecha_x:number){
+      this.pixeles_a_mm(position_nombres_y,position_nombres_x,position_imagen_y,position_imagen_x,position_descripcion_y,position_descripcion_x, position_fecha_y,position_fecha_x);
     
         const coordenadas = {
-          coordenada_x:this.coordenada_x_mm -21,
+          coordenada_x:this.coordenada_x_mm,
           coordenada_y:this.coordenada_y_mm,
           coordenada_x_qr:this.coordenada_x_mm_qr,
           coordenada_y_qr:this.coordenada_y_mm_qr,
-          coordenada_x_descripcion:this.coordenada_x_mm_descripcion -6 ,
-          coordenada_y_descripcion:this.coordenada_y_mm_descripcion + 1
-    
+          coordenada_x_descripcion:this.coordenada_x_mm_descripcion,
+          coordenada_y_descripcion:this.coordenada_y_mm_descripcion,
+          coordenada_x_fecha:this.coordenada_x_mm_fecha,
+          coordenada_y_fecha:this.coordenada_y_mm_fecha
         }
       
       this.coordenadasService.agregar_coordenada(coordenadas);

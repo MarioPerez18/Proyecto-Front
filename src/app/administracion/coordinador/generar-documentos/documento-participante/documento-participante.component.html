@@ -6,20 +6,24 @@
             <div class="draggable-content text-overlay text-center" [ngStyle]="{top:position_nombres.y + 'px', left:position_nombres.x  + 'px'}" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
                 <p>{{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}</p>
             </div>
-            <div class="background-image-qr" [ngStyle]="{top:position_imagen.y  + 'px',  left:position_imagen.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <img [src]="png_qr" alt="png_qrcode" width="130px" height="130px" class="img">
-            </div>
             <div class="contenedor-descripcion"  [ngStyle]="{top:position_descripcion.y + 'px',  left:position_descripcion.x  + 'px'}" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p>
+                <p class="descripcion_txt">
                     Por su participación como {{tipo_participante}} en el evento Academia Journals:
                     Espacio de trabajo donde se da a conocer los resultados de investigación.
                 </p>
             </div>
+            <div class="background-image-qr" [ngStyle]="{top:position_imagen.y  + 'px',  left:position_imagen.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <img [src]="png_qr" alt="png_qrcode" width="113px" height="113px" class="img">
+            </div>
+            <div style="border-style: dashed;" class="contenedor-fecha" [ngStyle]="{top:position_fecha.y  + 'px',  left:position_fecha.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="text-center">Fecha Finalización</p>
+            </div>
+            
         </div>
     </div>
     <div class="mt-2">
         <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
-        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos" (click)="coordenadas(position_nombres.y,position_nombres.x,position_imagen.y,position_imagen.x,position_descripcion.y,position_descripcion.x)">Aceptar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos" (click)="coordenadas(position_nombres.y,position_nombres.x,position_imagen.y,position_imagen.x,position_descripcion.y,position_descripcion.x,position_fecha.y,position_fecha.x)">Aceptar</button>
     </div>
 </div>
   

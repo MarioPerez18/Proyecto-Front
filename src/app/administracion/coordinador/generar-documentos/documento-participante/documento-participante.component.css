@@ -1,11 +1,11 @@
 .contenedor-a4 {
-    width: 80vw;
-    height: calc(80vw * 210 / 297);  /* Mantener proporción A4 */
-    max-width: 300mm;
-    max-height: 210mm;
+    width: 297mm;
+    height: 210mm;
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     position: relative;  /* Necesario para posicionar el contenido relativo a este contenedor */
+    margin: 0;
+    padding: 0;
 }
 
 /* Imagen de fondo que se adapta al contenedor A4 */
@@ -52,12 +52,22 @@
 
 .contenedor-descripcion{
     position: absolute;
-    width: 540px;
+    width: 548px;
     height: 80px;
     text-align: center;
     font-family: Arial;
     font-size: 18px;
     color: black;
+}
+.descripcion_txt{
+    width: 548px;
+    height: 80px;  
+}
+
+.contenedor-fecha{
+    position: absolute;
+    height: 30px;
+    width: 265px;
 }
 
 /* Media queries para pantallas más pequeñas */

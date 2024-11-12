@@ -18,15 +18,18 @@ export class TipoPlantillaComponent implements OnInit {
   showDiv: boolean = false;
   descripcionDiv: boolean = false;
   imgDiv: boolean = false;
+  fecha_finalizacionDiv: boolean = false;
   
 
   position_nombres_coordinador = { x:350 , y:380 }; // Coordenadas iniciales
   position_descripcion_coordinador = {x:300, y:430 };
-  position_imagen_coordinador = {x:400, y:630 };
+  position_imagen_coordinador = {x:400, y:640 };
+  position_fecha_coordinador = {x: 600, y: 320};
 
-  position_nombres_ponente = { x: 330, y: 370 }; // Coordenadas iniciales
-  position_descripcion_ponente = {x: 385, y: 310};
+  position_nombres_ponente = { x: 320, y: 370 }; // Coordenadas iniciales
+  position_descripcion_ponente = {x: 374, y: 310};
   position_imagen_ponente = {x: 643, y: 533};
+  position_fecha_ponente = {x: 603, y: 454};
 
   
   coordenada_x_px:number;
@@ -37,7 +40,10 @@ export class TipoPlantillaComponent implements OnInit {
  
   coordenada_x_px_descripcion:number;
   coordenada_y_px_descripcion:number;
-  
+
+  coordenada_x_px_fecha:number;
+  coordenada_y_px_fecha:number;
+
 
   
   @ViewChild('divNombre') divNombre: ElementRef;
@@ -47,6 +53,7 @@ export class TipoPlantillaComponent implements OnInit {
   @ViewChild('divNombrePonente') divNombrePonente: ElementRef;
   @ViewChild('divImagenPonente') divImagenPonente: ElementRef;
   @ViewChild('divDescripcionPonente') divDescripcionPonente: ElementRef;
+  @ViewChild('divFechaPonente') divFechaPonente: ElementRef;
 
   constructor(private route: ActivatedRoute, private api: DataService,  private coordenadasService: CoordenadasService){}
 
@@ -75,7 +82,7 @@ export class TipoPlantillaComponent implements OnInit {
   nombreDiv(event: any){
     this.showDiv = event.target.checked;
     if (this.showDiv) {
-      // Puedes ajustar la posición aquí si es necesario
+      //ajustar la posición aquí si es necesario
       //this.position.x = 100; // Nueva coordenada X
       //this.position.y = 100; // Nueva coordenada Y
     }
@@ -85,7 +92,7 @@ export class TipoPlantillaComponent implements OnInit {
   descripcioneDiv(event: any){
     this.descripcionDiv = event.target.checked;
     if (this.descripcionDiv) {
-      // Puedes ajustar la posición aquí si es necesario
+      //ajustar la posición aquí si es necesario
       //this.position.x = 100; // Nueva coordenada X
       //this.position.y = 150; // Nueva coordenada Y
     }
@@ -95,7 +102,16 @@ export class TipoPlantillaComponent implements OnInit {
   imagenDiv(event: any){
     this.imgDiv = event.target.checked;
     if (this.imgDiv) {
-      //Se podria ajustar la posición aquí si es necesario
+      //ajustar la posición aquí si es necesario
+      //this.position.x = 100; // Nueva coordenada X
+      //this.position.y = 150; // Nueva coordenada Y
+    }
+  }
+
+  fechaDiv(event: any){
+    this.fecha_finalizacionDiv = event.target.checked;
+    if (this.fecha_finalizacionDiv) {
+      //ajustar la posición aquí si es necesario
       //this.position.x = 100; // Nueva coordenada X
       //this.position.y = 150; // Nueva coordenada Y
     }
@@ -104,7 +120,7 @@ export class TipoPlantillaComponent implements OnInit {
   nombreDivPonente(event: any){
     this.showDiv = event.target.checked;
     if (this.showDiv) {
-      //Se podria ajustar la posición aquí si es necesario
+      //ajustar la posición aquí si es necesario
       //this.position.x = 100; // Nueva coordenada X
       //this.position.y = 100; // Nueva coordenada Y
     }
@@ -114,7 +130,7 @@ export class TipoPlantillaComponent implements OnInit {
   descripcioneDivPonente(event: any){
     this.descripcionDiv = event.target.checked;
     if (this.descripcionDiv) {
-      //Se podria ajustar la posición aquí si es necesario
+      //ajustar la posición aquí si es necesario
       //this.position.x = 100; // Nueva coordenada X
       //this.position.y = 150; // Nueva coordenada Y
     }
@@ -124,7 +140,7 @@ export class TipoPlantillaComponent implements OnInit {
   imagenDivPonente(event: any){
     this.imgDiv = event.target.checked;
     if (this.imgDiv) {
-      //Se podria ajustar la posición aquí si es necesario
+      //ajustar la posición aquí si es necesario
       //this.position.x = 100; // Nueva coordenada X
       //this.position.y = 150; // Nueva coordenada Y
     }
@@ -197,6 +213,26 @@ export class TipoPlantillaComponent implements OnInit {
      this.coordenada_y_px_descripcion = Math.trunc(adjustedY);
  }
 
+ coordenadas_fecha(event: CdkDragRelease<any>){
+  // Obtener las coordenadas del elemento
+  const containerRect = this.dragContainer.nativeElement.getBoundingClientRect();
+    
+  // Obtener el rectángulo del elemento arrastrado
+  const draggedElementRect = event.source.element.nativeElement.getBoundingClientRect();
+
+  // Calcular las coordenadas relativas al contenedor
+  const relativeX = draggedElementRect.left - containerRect.left;
+  const relativeY =  draggedElementRect.top - containerRect.top;
+
+  // Asegurarse de que las coordenadas no son negativas ni exceden el contenedor
+  const adjustedX = Math.max(0, Math.min(relativeX, containerRect.width - draggedElementRect.width));
+  const adjustedY = Math.max(0, Math.min(relativeY, containerRect.height - draggedElementRect.height));
+
+  // Guardar las coordenadas directamente en píxeles
+  this.coordenada_x_px_fecha = Math.trunc(adjustedX);
+  this.coordenada_y_px_fecha = Math.trunc(adjustedY);
+}
+
 
   coordenadas_coordinador(){
     const coordenadas = {
@@ -222,7 +258,9 @@ export class TipoPlantillaComponent implements OnInit {
       coordenada_x_qr:this.coordenada_x_px_qr || this.position_imagen_ponente.y,
       coordenada_y_qr:this.coordenada_y_px_qr || this.position_imagen_ponente.x,
       coordenada_x_descripcion:this.coordenada_x_px_descripcion || this.position_descripcion_ponente.y,
-      coordenada_y_descripcion:this.coordenada_y_px_descripcion || this.position_descripcion_ponente.x
+      coordenada_y_descripcion:this.coordenada_y_px_descripcion || this.position_descripcion_ponente.x,
+      coordenada_y_fecha:this.coordenada_x_px_fecha || this.position_fecha_ponente.y,
+      coordenada_x_fecha:this.coordenada_y_px_fecha || this.position_fecha_ponente.x
     }
     this.coordenadasService.agregar_coordenada_ponente(coordenadas);
     console.log(coordenadas);
