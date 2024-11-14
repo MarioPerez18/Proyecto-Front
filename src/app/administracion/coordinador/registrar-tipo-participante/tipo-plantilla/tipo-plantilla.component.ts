@@ -28,8 +28,8 @@ export class TipoPlantillaComponent implements OnInit {
 
   position_nombres_ponente = { x: 320, y: 370 }; // Coordenadas iniciales
   position_descripcion_ponente = {x: 374, y: 310};
-  position_imagen_ponente = {x: 643, y: 533};
-  position_fecha_ponente = {x: 603, y: 454};
+  position_imagen_ponente = {x: 643, y: 520};
+  position_fecha_ponente = {x: 603, y: 424};
 
   
   coordenada_x_px:number;

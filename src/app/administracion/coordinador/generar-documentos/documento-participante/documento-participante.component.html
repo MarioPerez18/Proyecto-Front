@@ -15,8 +15,8 @@
             <div class="background-image-qr" [ngStyle]="{top:position_imagen.y  + 'px',  left:position_imagen.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
                 <img [src]="png_qr" alt="png_qrcode" width="113px" height="113px" class="img">
             </div>
-            <div style="border-style: dashed;" class="contenedor-fecha" [ngStyle]="{top:position_fecha.y  + 'px',  left:position_fecha.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
-                <p class="text-center">Fecha Finalización</p>
+            <div class="contenedor-fecha" [ngStyle]="{top:position_fecha.y  + 'px',  left:position_fecha.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="txt_fecha">Fecha finalización: 15 de May del 2024</p>
             </div>
             
         </div>

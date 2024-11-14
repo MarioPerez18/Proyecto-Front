@@ -22,10 +22,7 @@
 }
 
 .background-image-qr{
-    object-fit: cover;  /* La imagen se ajusta sin distorsionarse */
     position: absolute;  /* La imagen está detrás del contenido */
-    bottom: 70px;
-    left: 380px;
     z-index: 1;  /* La imagen tiene un z-index menor, por lo que está detrás */
     width: 113px;
     height: 113px;
@@ -60,8 +57,16 @@
 
 .contenedor-fecha{
     position: absolute;
-    height: 30px;
-    width: 265px;
+    height: 25px;
+    width: 310px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+.txt_fecha{
+    font-size: 15px;
 }
 
 
