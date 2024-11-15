@@ -14,6 +14,7 @@ export class DocumentoParticipanteComponent implements OnInit {
   @ViewChild('dragContainer', { static: false }) dragContainer!: ElementRef;
 
   participantes:any[] = [];
+  id_participante:number;
   tipo_participante:string;
   plantilla:any[];
   url_plantilla:string;
@@ -49,6 +50,7 @@ export class DocumentoParticipanteComponent implements OnInit {
   ngOnInit(){
     this.obtener_participantes();  
     this.tipo_participante = this.route.snapshot.params['tipo_participante'];
+    this.id_participante = this.route.snapshot.params['id_participante'];
      console.log(this.tipo_participante);
     //console.log(this.tipo_participante);
     this.obtener_plantilla_documento();
@@ -75,7 +77,7 @@ export class DocumentoParticipanteComponent implements OnInit {
     this.api.get_participants().subscribe((data:any) => {
       this.participantes = data;
       this.participantes = this.participantes.filter((participante:any)=>{
-        return participante.TipoParticipante == this.tipo_participante;
+        return participante.TipoParticipante == this.tipo_participante && participante.id == this.id_participante;
       })
     });
   }

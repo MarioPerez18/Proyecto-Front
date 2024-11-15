@@ -58,32 +58,28 @@ export class GenerarDocumentosComponent implements OnInit {
   generarPDF(){
     let genera_documento;
 
-    /*this.participantes.forEach((participante) => {
+    this.dataSource.filteredData.forEach((participante:any) => {
       genera_documento = {
-        participante:this.dataSource.filteredData,
+        id:participante.id,
+        Nombres:participante.Nombres,
+        ApellidoPaterno:participante.ApellidoPaterno,
+        ApellidoMaterno:participante.ApellidoMaterno,
+        Correo:participante.Correo,
+        Evento:participante.Evento,
+        Descripcion:participante.Descripcion,
+        TipoParticipante:participante.TipoParticipante,
+        FechaTermino:participante.FechaTermino,
         coordenada_x:this.coordenadas.coordenadass[0].coordenada_x,
         coordenada_y:this.coordenadas.coordenadass[0].coordenada_y,
         coordenada_x_qr:this.coordenadas.coordenadass[0].coordenada_x_qr,
         coordenada_y_qr:this.coordenadas.coordenadass[0].coordenada_y_qr,
         coordenada_x_descripcion:this.coordenadas.coordenadass[0].coordenada_x_descripcion,
-        coordenada_y_descripcion:this.coordenadas.coordenadass[0]. coordenada_y_descripcion
+        coordenada_y_descripcion:this.coordenadas.coordenadass[0].coordenada_y_descripcion,
+        coordenada_x_fecha:this.coordenadas.coordenadass[0].coordenada_x_fecha,
+        coordenada_y_fecha:this.coordenadas.coordenadass[0].coordenada_y_fecha
       }
-      //this.api.generate_document(genera_documento);
-      console.log(genera_documento);
-    });*/
-    genera_documento = {
-      participante:this.dataSource.filteredData,
-      coordenada_x:this.coordenadas.coordenadass[0].coordenada_x,
-      coordenada_y:this.coordenadas.coordenadass[0].coordenada_y,
-      coordenada_x_qr:this.coordenadas.coordenadass[0].coordenada_x_qr,
-      coordenada_y_qr:this.coordenadas.coordenadass[0].coordenada_y_qr,
-      coordenada_x_descripcion:this.coordenadas.coordenadass[0].coordenada_x_descripcion,
-      coordenada_y_descripcion:this.coordenadas.coordenadass[0].coordenada_y_descripcion,
-      coordenada_x_fecha:this.coordenadas.coordenadass[0].coordenada_x_fecha,
-      coordenada_y_fecha:this.coordenadas.coordenadass[0].coordenada_y_fecha
-    }
-    this.api.generate_document(genera_documento);
-    //console.log(genera_documento);
+      this.api.generate_document(genera_documento);
+    })
   }
 }
 

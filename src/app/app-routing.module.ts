@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'coordinador/tipos-de-participantes', component:RegistrarTipoParticipanteComponent},
   {path: 'coordinador/tipos-plantilla/:tipo-plantilla', component:TipoPlantillaComponent},
   {path: 'coordinador/documentos', component:GenerarDocumentosComponent},
-  {path: 'coordinador/documentos/:tipo_participante', component:DocumentoParticipanteComponent}
+  {path: 'coordinador/documentos/:id_participante/:tipo_participante', component:DocumentoParticipanteComponent}
 ];
 
 @NgModule({
