@@ -30,6 +30,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CoordenadasService } from './administracion/coordinador/generar-documentos/coordenadas.service';
 import { TipoPlantillaComponent } from './administracion/coordinador/registrar-tipo-participante/tipo-plantilla/tipo-plantilla.component';
+import { ValidarDocumentoComponent } from './administracion/coordinador/validar-documento/validar-documento.component';
+import { ValidacionDocumento } from './administracion/coordinador/validar-documento/validacion_documento.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { TipoPlantillaComponent } from './administracion/coordinador/registrar-t
     DocumentoParticipanteComponent,
     RegistrarTipoParticipanteComponent,
     TipoPlantillaComponent,
+    ValidarDocumentoComponent,
 
     
   ],
@@ -65,7 +68,7 @@ import { TipoPlantillaComponent } from './administracion/coordinador/registrar-t
     ReactiveFormsModule,
     MatCheckboxModule     
   ],
-  providers: [DataService, LoginService, RegistroService, CoordenadasService],
+  providers: [DataService, LoginService, RegistroService, CoordenadasService, ValidacionDocumento],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

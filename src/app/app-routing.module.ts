@@ -14,6 +14,7 @@ import { EditarInstitucionComponent } from './administracion/administrador/edita
 import { DocumentoParticipanteComponent } from './administracion/coordinador/generar-documentos/documento-participante/documento-participante.component';
 import { RegistrarTipoParticipanteComponent } from './administracion/coordinador/registrar-tipo-participante/registrar-tipo-participante.component';
 import { TipoPlantillaComponent } from './administracion/coordinador/registrar-tipo-participante/tipo-plantilla/tipo-plantilla.component';
+import { ValidarDocumentoComponent } from './administracion/coordinador/validar-documento/validar-documento.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'coordinador/tipos-de-participantes', component:RegistrarTipoParticipanteComponent},
   {path: 'coordinador/tipos-plantilla/:tipo-plantilla', component:TipoPlantillaComponent},
   {path: 'coordinador/documentos', component:GenerarDocumentosComponent},
+  {path: 'coordinador/validar-documento', component:ValidarDocumentoComponent},
   {path: 'coordinador/documentos/:id_participante/:tipo_participante', component:DocumentoParticipanteComponent}
 ];
 
