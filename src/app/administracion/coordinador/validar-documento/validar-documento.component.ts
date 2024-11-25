@@ -12,6 +12,7 @@ export class ValidarDocumentoComponent implements OnInit {
   datos_participante:any[] = [];
 
   fecha:string;
+  url_qr:string;
   
   constructor(private validar_documento: ValidacionDocumento){}
 
@@ -23,8 +24,14 @@ export class ValidarDocumentoComponent implements OnInit {
     return this.datos_participante.length > 0;
   }
 
+  url_qr_code(url:any){
+    this.url_qr = url;
+
+  }
+
+  
   validar_documento_participante(){
-    const array_cadena = this.cadena.split("/");
+    const array_cadena = this.url_qr.split("/");
     this.validar_documento.validar_documento(array_cadena.pop())
     .subscribe(
       (respuesta:any) => {

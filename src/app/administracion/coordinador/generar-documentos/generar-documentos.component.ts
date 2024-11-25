@@ -11,7 +11,7 @@ import { CoordenadasService } from './coordenadas.service';
 })
 export class GenerarDocumentosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nombres', 'apellido_paterno', 'apellido_materno', 'evento',
-                                'descripcion', 'tipo_participante', 'fecha_termino', 'documento'
+                                'descripcion', 'tipo_participante', 'fecha_termino', 'documento', 'editar_documento'
   ];
   genera_documentos:string = 'Generar documentos';
   btn_generar_pdf:string = 'generar PDF';

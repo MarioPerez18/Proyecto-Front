@@ -32,6 +32,7 @@
 /* Div que aparece delante de la imagen */
 .content-overlay {
     z-index: 2;  /* El contenido está por delante de la imagen */
+    cursor: move;
 }
 
 /* Estilo del texto dentro del div de superposición */

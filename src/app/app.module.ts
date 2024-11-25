@@ -32,6 +32,13 @@ import { CoordenadasService } from './administracion/coordinador/generar-documen
 import { TipoPlantillaComponent } from './administracion/coordinador/registrar-tipo-participante/tipo-plantilla/tipo-plantilla.component';
 import { ValidarDocumentoComponent } from './administracion/coordinador/validar-documento/validar-documento.component';
 import { ValidacionDocumento } from './administracion/coordinador/validar-documento/validacion_documento.service';
+import { LecturaCodigosQrComponent } from './administracion/coordinador/validar-documento/lectura-codigos-qr/lectura-codigos-qr.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogoComponent } from './administracion/coordinador/validar-documento/lectura-codigos-qr/dialogo/dialogo.component';
+import { MatCardModule } from '@angular/material/card'; 
+import { MatIconModule } from '@angular/material/icon';  
+import { MatButtonModule } from '@angular/material/button';
+import { EditarDocumentoParticipanteComponent } from './administracion/coordinador/generar-documentos/editar-documento-participante/editar-documento-participante.component'; 
 
 @NgModule({
   declarations: [
@@ -51,6 +58,9 @@ import { ValidacionDocumento } from './administracion/coordinador/validar-docume
     RegistrarTipoParticipanteComponent,
     TipoPlantillaComponent,
     ValidarDocumentoComponent,
+    LecturaCodigosQrComponent,
+    DialogoComponent,
+    EditarDocumentoParticipanteComponent,
 
     
   ],
@@ -66,7 +76,11 @@ import { ValidacionDocumento } from './administracion/coordinador/validar-docume
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatCheckboxModule     
+    MatCheckboxModule,   
+    MatDialogModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [DataService, LoginService, RegistroService, CoordenadasService, ValidacionDocumento],
   bootstrap: [AppComponent]

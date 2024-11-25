@@ -1,0 +1,28 @@
+<!--cdkDrag se agrega al elemento que quieres que se arrastre-->
+<div class="container-fluid d-flex justify-content-center align-items-center bg-light min-vh-100 flex-column">
+    <div #dragContainer class="contenedor-a4 position-relative">
+        <img [src]="url_plantilla" class="background-image" alt="plantilla documento">
+        <div *ngFor="let participante of participantes" class="content-overlay position-relative  w-100 h-100 d-flex justify-content-center align-items-center" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+            <div class="draggable-content text-overlay text-center" [ngStyle]="{top:position_nombres.y + 'px', left:position_nombres.x  + 'px'}" (cdkDragReleased)="onDragReleased($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p>{{participante.Nombres}} {{participante.ApellidoPaterno}} {{participante.ApellidoMaterno}}</p>
+            </div>
+            <div class="contenedor-descripcion"  [ngStyle]="{top:position_descripcion.y + 'px',  left:position_descripcion.x  + 'px'}" (cdkDragReleased)="coordenadas_descripcion($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="descripcion_txt">
+                    Por su participación como {{tipo_participante}} en el evento Academia Journals:
+                    Espacio de trabajo donde se da a conocer los resultados de investigación.
+                </p>
+            </div>
+            <div class="background-image-qr" [ngStyle]="{top:position_imagen.y  + 'px',  left:position_imagen.x + 'px'}" (cdkDragReleased)="coordenadas_png_qr($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <img [src]="png_qr" alt="png_qrcode" width="113px" height="113px" class="img">
+            </div>
+            <div class="contenedor-fecha" [ngStyle]="{top:position_fecha.y  + 'px',  left:position_fecha.x + 'px'}" (cdkDragReleased)="coordenadas_fecha($event)" cdkDragBoundary=".contenedor-a4" cdkDrag>
+                <p class="txt_fecha">Fecha finalización: 15 de May del 2024</p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="mt-2">
+        <button type="button" class="btn btn-danger me-2" routerLink="/coordinador/documentos">Cancelar</button>
+        <button class="btn btn-primary ms-1" routerLink="/coordinador/documentos" (click)="coordenadas()">Aceptar</button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title class="mat-dialog-title">QR Code</h2>
+
+<mat-dialog-content>
+  <div class="mat-dialog-content-body">
+    <!-- Mostrar la información del QR Code como un JSON -->
+    <p><strong>Datos del QR:</strong></p>
+    <pre>{{ data.qrcode["data"] }}</pre>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Abrir</button>
+</mat-dialog-actions>
+
+
