@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { event } from 'jquery';
 import { DataService } from 'src/app/data.service';
 
 @Component({
@@ -22,7 +21,6 @@ export class EventosComponent implements OnInit {
   todos_los_eventos(){
     this.api.get_events().subscribe((data:any) => {
       this.eventos = data;
-      console.log(data);
     })
   }
 
@@ -32,8 +30,6 @@ export class EventosComponent implements OnInit {
       event_id:id_evento,
       participant_type_id:2
     }
-
     this.api.register_event(usuario);
-    //console.log(typeof id_evento);
   }
 }

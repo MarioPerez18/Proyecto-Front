@@ -54,12 +54,10 @@ export class RegistrarTipoParticipanteComponent implements OnInit {
 
   recuperar_id_tipo_participante(participante_id:number){
     this.id_tipo_participante = participante_id;
-    console.log( this.id_tipo_participante);
   }
 
   recupera_id_documento(tipo_documento_id:number){
     this.id_tipo_documento = tipo_documento_id;
-    console.log(this.id_tipo_documento);
   }
 
 
@@ -94,8 +92,6 @@ export class RegistrarTipoParticipanteComponent implements OnInit {
       participant_type_id: this.id_tipo_participante,
       document_type_id: this.id_tipo_documento
     }
-    this.api.asignar_plantilla_participante(plantilla_participante);
-    
+    this.api.asignar_plantilla_participante(plantilla_participante); 
   }
-
 }

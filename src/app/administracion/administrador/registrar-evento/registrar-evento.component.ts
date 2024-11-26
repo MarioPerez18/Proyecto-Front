@@ -102,7 +102,6 @@ export class RegistrarEventoComponent implements OnInit {
 
     }
     this.api.asignar_tipo_participante_a_evento(asociar_plantilla);
-    //console.log(asociar_plantilla);
   }
 
   
@@ -111,7 +110,6 @@ export class RegistrarEventoComponent implements OnInit {
     const endDate = form.value.endDate;
     const nameEvent = form.value.nameEvent;
     const description = form.value.description;
-    //const participantTypes = this.tipos.value;
     const nameEventUri = nameEvent.toLowerCase();
 
     const evento = {

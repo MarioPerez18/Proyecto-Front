@@ -31,9 +31,6 @@ export class GenerarDocumentosComponent implements OnInit {
 
   ngOnInit(){
     this.obtener_participantes(); 
-    //this.coordenada_x = this.route.snapshot.params['coordenada_x_mm'];
-    //this.coordenada_y = this.route.snapshot.params['coordenada_y_mm'];
-    //console.log(this.coordenada_x);
   }
 
 

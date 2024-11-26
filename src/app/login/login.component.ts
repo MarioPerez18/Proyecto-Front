@@ -28,7 +28,6 @@ export class LoginComponent {
   obtener_respuesta(credenciales: Login) {
     this.loginService.login(credenciales).subscribe(
       (respuesta: any) => {
-        console.log('Has iniciado sesión ', respuesta.token);
         sessionStorage.setItem('token', respuesta.token);
         sessionStorage.setItem('nombre_usuario', respuesta.user);
         sessionStorage.setItem('id_usuario', respuesta.user_id);
@@ -50,7 +49,6 @@ export class LoginComponent {
         })
         this.bandera = false;
       }
-      //console.log("Credenciales invalidad" , error.error.message)
     );
     
     

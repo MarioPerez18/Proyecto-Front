@@ -56,8 +56,7 @@ export class EditarDocumentoParticipanteComponent {
     this.obtener_participantes();  
     this.tipo_participante = this.route.snapshot.params['tipo_participante'];
     this.id_participante = this.route.snapshot.params['id_participante'];
-     console.log(this.tipo_participante);
-    //console.log(this.tipo_participante);
+    console.log(this.tipo_participante);
     this.obtener_plantilla_documento();
     switch(this.tipo_participante){
       case "coordinador":
@@ -73,7 +72,6 @@ export class EditarDocumentoParticipanteComponent {
         break;
       default:
         console.log("algo salió mal");
-
     }  
   }
 
@@ -225,9 +223,6 @@ export class EditarDocumentoParticipanteComponent {
           coordenada_x_fecha:this.coordenada_x_mm_fecha,
           coordenada_y_fecha:this.coordenada_y_mm_fecha
         }
-
-        
         this.coordenadasService.agregar_coordenada(coordenadas);
-        console.log(coordenadas);
       }
 }

@@ -243,12 +243,7 @@ export class TipoPlantillaComponent implements OnInit {
       coordenada_x_descripcion:this.coordenada_x_px_descripcion || this.position_descripcion_coordinador.x,
       coordenada_y_descripcion:this.coordenada_y_px_descripcion || this.position_descripcion_coordinador.y
     }
-
     this.coordenadasService.agregar_coordenada_coordinador(coordenadas);
-
-
-
-    console.log(coordenadas);
   }
 
   coordenadas_ponente(){
@@ -263,8 +258,5 @@ export class TipoPlantillaComponent implements OnInit {
       coordenada_x_fecha:this.coordenada_y_px_fecha || this.position_fecha_ponente.x
     }
     this.coordenadasService.agregar_coordenada_ponente(coordenadas);
-    console.log(coordenadas);
-
   }
-
 }

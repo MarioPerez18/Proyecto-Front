@@ -139,12 +139,6 @@ export class DocumentoParticipanteComponent implements OnInit {
           coordenada_x_fecha:this.coordenada_x_mm_fecha,
           coordenada_y_fecha:this.coordenada_y_mm_fecha
         }
-      
       this.coordenadasService.agregar_coordenada(coordenadas);
-      console.log("Coordenadas_finales: " + " nombres_x: " + coordenadas.coordenada_x + " mm, " + "nombres_y: " + coordenadas.coordenada_y + " mm, "
-        + " qr_x: " + coordenadas.coordenada_x_qr + " qr_y: " + coordenadas.coordenada_y_qr + ", descripcion_x: " + coordenadas.coordenada_x_descripcion +
-        " descripcion_y: " + coordenadas.coordenada_y_descripcion + ", fecha_x: " + coordenadas.coordenada_x_fecha + ", fecha_y: " + coordenadas.coordenada_y_fecha
-      );
     }
-  
 }
