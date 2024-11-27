@@ -1,18 +1,18 @@
 <app-coordinador>
   
-  <div class="p-2" style="height: 100%;">
+  <div class="p-2">
     <div class="row">
       <div class="col">
         <h3 class="text-center">Escanear Código QR</h3>
       </div>
-
     </div>
-    <div class="d-flex flex-column justify-content-center">
+
+    <div class="container-fluid">
       <app-lectura-codigos-qr (enviar_qr)="url_qr_code($event)"></app-lectura-codigos-qr>
     </div>
 
 
-    <div class="row gy-2 gx-3 align-items-center mt-5">
+    <div class="row gy-2 gx-3 align-items-center justify-content-center mt-5 mb-4">
       <div class="col-auto">
         <label class="visually-hidden" for="autoSizingInput">Name</label>
         <input type="text" class="form-control" id="autoSizingInput" value="{{url_qr}}" placeholder="Validar documento" [(ngModel)]="url_qr" 

@@ -19,7 +19,7 @@ export class ValidacionDocumento{
      }
 
     validar_documento(cadena:any){
-        return this.httpclient.get(`http://localhost:8000/api/validation/${cadena}`);
+        return this.httpclient.get(`http://localhost:8000/api/validacion/${cadena}`);
     }
 }
 

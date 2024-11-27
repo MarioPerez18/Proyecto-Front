@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import jsQR, { QRCode } from 'jsqr';
-import { DialogoComponent } from './dialogo/dialogo.component'; // Asegúrate de usar la ruta correcta
+import { DialogoComponent } from './dialogo/dialogo.component'; 
 
 @Component({
   selector: 'app-lectura-codigos-qr',

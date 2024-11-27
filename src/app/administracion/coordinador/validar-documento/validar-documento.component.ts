@@ -47,6 +47,8 @@ export class ValidarDocumentoComponent implements OnInit {
               confirmButtonText: 'Ok'
           })
     );
+   
+
   }
 
 

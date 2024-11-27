@@ -3,18 +3,18 @@
       <mat-card>
         <mat-card-content>
           <div fxLayout="row wrap">
-  
             <!-- Video -->
-            <div class="video-row" class="col-12  d-flex flex-column justify-content-around align-items-center">
+            <div class="video-row" class="col-12 d-flex flex-column justify-content-around align-items-center">
               <video class="video" id="video" #video autoplay playsinline></video>
             </div>
+            
             <!-- Canvas -->
             <div class="col-12" style="display:none">
               <canvas class="video" id="canvas" #canvas></canvas>
             </div>
   
             <!-- Button -->
-            <div class="col-12" class="d-flex justify-content-around align-items-center">
+            <div class="col-12" class="d-flex justify-content-around align-items-center pt-1">
               <ng-container *ngIf="!videoStart">
                 <button mat-fab class="mat-elevation-z1" (click)="toggleVideoMedia()" [disabled]="videoStart" color="primary" aria-label="videocam icon-button">
                   <mat-icon>photo_camera</mat-icon>
@@ -27,10 +27,10 @@
                 </button>
               </ng-container>
             </div>
-  
           </div>
         </mat-card-content>
       </mat-card>
     </div>
 </div>
+
   
