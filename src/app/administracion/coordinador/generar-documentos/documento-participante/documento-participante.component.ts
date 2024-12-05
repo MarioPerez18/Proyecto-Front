@@ -59,6 +59,7 @@ export class DocumentoParticipanteComponent implements OnInit {
         this.position_nombres = {x:this.coordenadasService.coordenadass_coordi[0].coordenada_x, y:this.coordenadasService.coordenadass_coordi[0].coordenada_y};
         this.position_descripcion = {x:this.coordenadasService.coordenadass_coordi[0].coordenada_x_descripcion, y:this.coordenadasService.coordenadass_coordi[0].coordenada_y_descripcion};
         this.position_imagen = {x:this.coordenadasService.coordenadass_coordi[0].coordenada_x_qr, y:this.coordenadasService.coordenadass_coordi[0].coordenada_y_qr};
+        this.position_fecha = {x:this.coordenadasService.coordenadass_coordi[0].coordenada_y_fecha, y:this.coordenadasService.coordenadass_coordi[0].coordenada_x_fecha};
         break;
       case "ponente":
         this.position_nombres = {x:this.coordenadasService.coordenadass_ponente[0].coordenada_x, y:this.coordenadasService.coordenadass_ponente[0].coordenada_y};
