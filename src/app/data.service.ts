@@ -36,6 +36,11 @@ export class DataService{
         this.httpclient.put(`http://localhost:8000/api/update-institution/${id_institucion}`, institucion, this.getHttpHeaders())
         .subscribe(
             (respuesta:any) => {
+                Swal.fire({
+                    title: respuesta.respuesta,
+                    icon: respuesta.icono,
+                    confirmButtonText: 'Ok'
+                })
                 this.router.navigate(['/administrador/instituciones']);
             },
             error => {
@@ -118,11 +123,11 @@ export class DataService{
         this.httpclient.put(`http://localhost:8000/api/events/${id}`, evento, this.getHttpHeaders())
         .subscribe(
             (respuesta:any) => {
-                /*Swal.fire({
+                Swal.fire({
                     title: respuesta.respuesta,
                     icon: respuesta.icono,
                     confirmButtonText: 'Ok'
-                })*/
+                })
                 this.router.navigate(['/administrador/eventos']);
             },
             error => 
@@ -132,7 +137,6 @@ export class DataService{
                     confirmButtonText: 'Ok'
                 })
         );
-        
     }
     //eliminar un evento
     delete_event(id_evento:number){

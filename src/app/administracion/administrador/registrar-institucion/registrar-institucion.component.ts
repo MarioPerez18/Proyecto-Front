@@ -113,8 +113,7 @@ export class RegistrarInstitucionComponent implements OnInit {
         .subscribe(
           (respuesta:any) => {
             Swal.fire({
-             title: "Instituto eliminado",
-             text: respuesta.respuesta,
+             title: respuesta.respuesta,
              icon: respuesta.icono
             });
             this.instituciones = this.instituciones.filter(function(institucion){
